@@ -59,7 +59,7 @@ void substrOf(char s[], char t[], int index, int sizeT) {
         printf("The string \"%s\" is a substring of \"%s\"\n", t, s);
         return;
     } else {
-        if (s[index] == '\0' || s[index + sizeT] == '\0') {
+        if (s[index] == '\0') {
             printf("The string \"%s\" is not a substring of \"%s\"\n", t, s);
         } else {
             substrOf(s, t, index + 1, sizeT);
@@ -72,7 +72,7 @@ int substrIndex(char s[], char t[], int index, int sizeT) {
     if (strncmp(t, s + index, sizeT) == 0) {
         return index;
     } else {
-        if (s[index] == '\0' || s[index + sizeT] == '\0') {
+        if (s[index] == '\0') {
             return -1;  // Retorna -1 indicando que a string "t" não é substring da string "s".
         } else {
             return substrIndex(s, t, index + 1, sizeT) + 0;
