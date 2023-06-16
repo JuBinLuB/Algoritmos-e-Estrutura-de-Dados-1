@@ -3,7 +3,7 @@
 
 typedef struct TProduto;
 
-typedef struct Celula TCelula;
+typedef struct celula TCelula;
 
 typedef struct TLista;
 

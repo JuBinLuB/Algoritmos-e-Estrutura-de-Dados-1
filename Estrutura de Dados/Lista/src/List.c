@@ -6,9 +6,9 @@ typedef struct {
     int codigo;
 } TProduto;
 
-typedef struct Celula {
+typedef struct celula {
     TProduto item;
-    struct Celula *prox;
+    struct celula *prox;
 } TCelula;
 
 typedef struct {
@@ -36,12 +36,12 @@ void Inserir(TProduto x, TLista *lista) {
     lista->tamanho++;
 }
 
-TCelula* Pesquisar(TLista lista, TProduto item) {
+TCelula* Pesquisar(TLista lista, TProduto Item) {
     TCelula *Aux;
     Aux = lista.primeiro;
 
     while(Aux != NULL) {
-        if(Aux->prox->item.codigo == item.codigo) {
+        if(Aux->prox->item.codigo == Item.codigo) {
             return Aux;
         }
         Aux = Aux->prox;
@@ -54,7 +54,7 @@ void Imprimir(TLista lista) {
     Aux = lista.primeiro->prox;
 
     while(Aux != NULL) {
-        printf("%d", Aux->item.codigo);
+        printf("%d\n", Aux->item.codigo);
         Aux = Aux->prox;
     }
 }
