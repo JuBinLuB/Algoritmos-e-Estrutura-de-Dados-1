@@ -15,6 +15,6 @@ void Inserir(TProduto x, TLista *lista);
 
 void Imprimir(TLista lista);
 
-TCelula* Pesquisar(TLista lista, TProduto item);
+TCelula *Pesquisar(TLista lista, TProduto item);
 
 #endif //LIST_H_INCLUDED

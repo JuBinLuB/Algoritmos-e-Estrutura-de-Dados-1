@@ -36,12 +36,12 @@ void Inserir(TProduto x, TLista *lista) {
     lista->tamanho++;
 }
 
-TCelula* Pesquisar(TLista lista, TProduto Item) {
+TCelula *Pesquisar(TLista lista, TProduto Item) {
     TCelula *Aux;
     Aux = lista.primeiro;
 
-    while(Aux != NULL) {
-        if(Aux->prox->item.codigo == Item.codigo) {
+    while (Aux != NULL) {
+        if (Aux->prox->item.codigo == Item.codigo) {
             return Aux;
         }
         Aux = Aux->prox;
@@ -53,7 +53,7 @@ void Imprimir(TLista lista) {
     TCelula *Aux;
     Aux = lista.primeiro->prox;
 
-    while(Aux != NULL) {
+    while (Aux != NULL) {
         printf("%d\n", Aux->item.codigo);
         Aux = Aux->prox;
     }
