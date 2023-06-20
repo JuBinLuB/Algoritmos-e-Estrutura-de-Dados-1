@@ -54,13 +54,14 @@ void reverseOrder(char str[], int start, int end) {
 }
 
 // Questao #13
-void substrOf(char s[], char t[], int index, int sizeT) {
+int substrOf(char s[], char t[], int index, int sizeT) {
     if (strncmp(t, s + index, sizeT) == 0) {
         printf("The string \"%s\" is a substring of \"%s\"\n", t, s);
-        return;
+        return 1;
     } else {
         if (s[index] == '\0') {
             printf("The string \"%s\" is not a substring of \"%s\"\n", t, s);
+            return 0;
         } else {
             substrOf(s, t, index + 1, sizeT);
         }

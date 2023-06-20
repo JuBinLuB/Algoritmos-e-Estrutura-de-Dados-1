@@ -9,7 +9,7 @@ int strLength(char str[], int index);
 
 void reverseOrder(char str[], int start, int end);
 
-void substrOf(char s[], char t[], int index, int sizeT);
+int substrOf(char s[], char t[], int index, int sizeT);
 
 int substrIndex(char s[], char t[], int index, int sizeT);
 
