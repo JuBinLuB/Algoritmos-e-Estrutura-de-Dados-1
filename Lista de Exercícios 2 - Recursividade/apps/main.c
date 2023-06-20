@@ -47,7 +47,8 @@ int main(void) {
     char t[] = {"lena"};
     int sizeT = strlen(t);
     printf("#13:\t");
-    substrOf(s, t, 0, sizeT);
+    int substr = substrOf(s, t, 0, sizeT);
+    printf("%d\n", substr);
 
     // #14: Retornando a posição inicial da primeira substring da string "s" que eh igual a string "t".
     int index = substrIndex(s, t, 0, sizeT);
