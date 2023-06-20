@@ -59,12 +59,11 @@ int main(void) {
     scanf("%d", &x.codigo);
     Excluir(&Lista, &x);
 
-    // #6: Teste de verificacao de Exclusao.
-    printf("\n#6\tProduto Excluido:\n");
+    printf("\n\tProduto removido: ");
     ImprimirProduto(x);
 
-    // #7: Teste da versao final da Lista.
-    printf("\n#7:\tImpressao Final:\n\n");
+    // #6: Teste da versao final da Lista.
+    printf("\n#6:\tImpressao Final:\n\n");
     Imprimir(Lista);
     printf("\tTamanho: %d\n", Lista.tamanho);
 

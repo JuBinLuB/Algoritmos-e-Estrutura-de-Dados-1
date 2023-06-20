@@ -2,22 +2,6 @@
 #include <stdlib.h>
 #include "List.h"
 
-typedef struct {
-    char nome[50];
-    int codigo;
-} TProduto;
-
-typedef struct celula {
-    TProduto item;
-    struct celula *prox;
-} TCelula;
-
-typedef struct {
-    TCelula *primeiro;
-    TCelula *ultimo;
-    int tamanho;
-} TLista;
-
 void FLVazia(TLista *Lista) {
     Lista->primeiro = (TCelula *)malloc(sizeof(TCelula));
     Lista->ultimo = Lista->primeiro;
