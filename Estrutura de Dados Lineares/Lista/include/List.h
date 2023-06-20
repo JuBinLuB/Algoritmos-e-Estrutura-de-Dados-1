@@ -7,14 +7,16 @@ typedef struct celula TCelula;
 
 typedef struct TLista;
 
-void FLVazia(TLista *lista);
+void FLVazia(TLista *Lista);
 
-int Vazia(TLista lista);
+int Vazia(TLista Lista);
 
-void Inserir(TProduto x, TLista *lista);
+void Inserir(TProduto x, TLista *Lista);
 
-void Imprimir(TLista lista);
+void Imprimir(TLista Lista);
 
-TCelula *Pesquisar(TLista lista, TProduto item);
+TCelula *Pesquisar(TLista Lista, TProduto Item);
+
+void Excluir(TLista *Lista, TProduto *Item);
 
 #endif //LIST_H_INCLUDED

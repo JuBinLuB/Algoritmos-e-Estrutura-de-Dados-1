@@ -3,6 +3,7 @@
 #include "List.h"
 
 typedef struct {
+    char nome[50];
     int codigo;
 } TProduto;
 
@@ -17,28 +18,39 @@ typedef struct {
     int tamanho;
 } TLista;
 
-void FLVazia(TLista *lista) {
-    lista->primeiro = (TCelula *)malloc(sizeof(TCelula));
-    lista->ultimo = lista->primeiro;
-    lista->primeiro->prox = NULL;
-    lista->tamanho = 0;
+void FLVazia(TLista *Lista) {
+    Lista->primeiro = (TCelula *)malloc(sizeof(TCelula));
+    Lista->ultimo = Lista->primeiro;
+    Lista->primeiro->prox = NULL;
+    Lista->tamanho = 0;
 }
 
-int Vazia(TLista lista) {
-    return (lista.primeiro == lista.ultimo);
+int Vazia(TLista Lista) {
+    return (Lista.primeiro == Lista.ultimo);
 }
 
-void Inserir(TProduto x, TLista *lista) {
-    lista->primeiro->prox = (TCelula *)malloc(sizeof(TCelula));
-    lista->ultimo = lista->primeiro->prox;
-    lista->ultimo->prox->item = x;
-    lista->ultimo->prox = NULL;
-    lista->tamanho++;
+void Inserir(TProduto x, TLista *Lista) {
+    Lista->ultimo->prox = (TCelula *)malloc(sizeof(TCelula));
+    Lista->ultimo = Lista->ultimo->prox;
+    Lista->ultimo->item = x;
+    Lista->ultimo->prox = NULL;
+    Lista->tamanho++;
 }
 
-TCelula *Pesquisar(TLista lista, TProduto Item) {
+void Imprimir(TLista Lista) {
     TCelula *Aux;
-    Aux = lista.primeiro;
+    Aux = Lista.primeiro->prox;
+
+    while (Aux != NULL) {
+        printf("\tCodigo: %d\n", Aux->item.codigo);
+        printf("\tNome: %s\n", Aux->item.nome);
+        Aux = Aux->prox;
+    }
+}
+
+TCelula *Pesquisar(TLista Lista, TProduto Item) {
+    TCelula *Aux;
+    Aux = Lista.primeiro;
 
     while (Aux != NULL) {
         if (Aux->prox->item.codigo == Item.codigo) {
@@ -49,12 +61,21 @@ TCelula *Pesquisar(TLista lista, TProduto Item) {
     return NULL;
 }
 
-void Imprimir(TLista lista) {
-    TCelula *Aux;
-    Aux = lista.primeiro->prox;
+void Excluir(TLista *Lista, TProduto *Item) {
+    TCelula *Aux1, *Aux2;
+    Aux1 = Pesquisar(*Lista, *Item);
+    
+    if (Aux1 != NULL) {
+        Aux2 = Aux1->prox;
+        Aux1->prox = Aux2->prox;
+        *Item = Aux2->item;
 
-    while (Aux != NULL) {
-        printf("%d\n", Aux->item.codigo);
-        Aux = Aux->prox;
+        if (Aux1->prox == NULL) {
+            Lista->ultimo = Aux1;
+        }
+        free(Aux2);
+        Lista->tamanho--;
+    } else {
+        printf("\nItem nao encontrado.\n");
     }
 }
