@@ -48,7 +48,7 @@ TCelula *Pesquisar(TLista Lista, TProduto Item) {
 void Excluir(TLista *Lista, TProduto *Item) {
     TCelula *Aux1, *Aux2;
     Aux1 = Pesquisar(*Lista, *Item);
-    
+
     if (Aux1 != NULL) {
         Aux2 = Aux1->prox;
         Aux1->prox = Aux2->prox;

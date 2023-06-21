@@ -57,6 +57,7 @@ int main(void) {
     printf("\tInforme o codigo do item: ");
     fflush(stdin);
     scanf("%d", &x.codigo);
+
     Excluir(&Lista, &x);
 
     printf("\n\tProduto removido: ");
