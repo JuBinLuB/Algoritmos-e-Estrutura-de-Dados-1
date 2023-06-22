@@ -1,8 +1,8 @@
-#ifndef LIST_H_INCLUDED
-#define LIST_H_INCLUDED
+#ifndef LISTA_H_INCLUDED
+#define LISTA_H_INCLUDED
 
 typedef struct {
-    char nome[50];
+    char nome[20];
     int codigo;
 } TProduto;
 
@@ -29,4 +29,4 @@ TCelula *Pesquisar(TLista Lista, TProduto Item);
 
 void Excluir(TLista *Lista, TProduto *Item);
 
-#endif // LIST_H_INCLUDED
+#endif // LISTA_H_INCLUDED
