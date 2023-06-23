@@ -25,9 +25,7 @@ int main() {
 }
 
 // Letra a)
-// char *StrCat(char *destino, char *origem) {
 
-// }
 
 // Letra b)
 int StrLen(char *string) {

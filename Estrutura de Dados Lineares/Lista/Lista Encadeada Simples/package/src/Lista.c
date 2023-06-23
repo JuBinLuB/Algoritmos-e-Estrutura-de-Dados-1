@@ -26,8 +26,9 @@ void Imprimir(TLista Lista) {
     Aux = Lista.primeiro->prox;
 
     while (Aux != NULL) {
-        printf("\tCodigo: %d\n", Aux->item.codigo);
-        printf("\tNome: %s\n", Aux->item.nome);
+        printf("\n\tCodigo: %d", Aux->item.codigo);
+        printf("\n\tNome: %s", Aux->item.nome);
+        printf("\tPreco: R$%.2f\n", Aux->item.preco);
         Aux = Aux->prox;
     }
 }
