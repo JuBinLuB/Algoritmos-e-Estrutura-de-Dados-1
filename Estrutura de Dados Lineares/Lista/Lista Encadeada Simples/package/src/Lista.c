@@ -63,3 +63,15 @@ void Excluir(TLista *Lista, TProduto *Item) {
         printf("\nItem nao encontrado.\n");
     }
 }
+
+void LiberarLista(TLista *Lista) {
+    TCelula *Aux1, *Aux2;
+    Aux1 = Lista->primeiro;
+
+    while (Aux1->prox != NULL) {
+        Aux2 = Aux1->prox;
+        Aux1->prox = Aux2->prox;
+        free(Aux2);
+    }
+    free(Aux1);
+}
