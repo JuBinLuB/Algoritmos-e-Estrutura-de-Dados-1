@@ -26,14 +26,13 @@ int main() {
 
 // Letra a)
 
-
 // Letra b)
 int StrLen(char *string) {
     int length = 0;
 
-    while (*string) { // O último caractere é falso.
+    while (*string) {
         length++;
-        string++; // Incrementa o endereço de memória.
+        string++;
     }
     return length;
 }
