@@ -6,14 +6,14 @@ OBJ = ./obj
 SRC = ./src
 
 FLAGS = -o3 -Wall
-LIBS = -l lista -L $(LIB)
+LIBS = -l lista_dupla -L $(LIB)
 
 all: lib myapps
 
 lib: \
-	$(OBJ)/lista.o \
+	$(OBJ)/lista_dupla.o \
 	$(OBJ)/interface.o
-	ar -rcs $(LIB)/liblista.a $(OBJ)/*.o
+	ar -rcs $(LIB)/liblista_dupla.a $(OBJ)/*.o
 
 myapps: clean_apps \
 	$(BIN)/main

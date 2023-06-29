@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lista.h"
+#include "lista_dupla.h"
 
 void FLVazia(TLista *Lista) {
     Lista->primeiro = (TCelula *)malloc(sizeof(TCelula));
     Lista->ultimo = Lista->primeiro;
     Lista->primeiro->prox = NULL;
+    Lista->primeiro->ant = NULL;
     Lista->tamanho = 0;
 }
 
@@ -16,6 +17,7 @@ int Vazia(TLista Lista) {
 
 void Inserir(TProduto x, TLista *Lista) {
     Lista->ultimo->prox = (TCelula *)malloc(sizeof(TCelula));
+    Lista->ultimo->prox->ant = Lista->ultimo;
     Lista->ultimo = Lista->ultimo->prox;
     Lista->ultimo->item = x;
     Lista->ultimo->prox = NULL;
@@ -58,6 +60,8 @@ void Excluir(TLista *Lista, TProduto *Item) {
 
         if (Aux1->prox == NULL) {
             Lista->ultimo = Aux1;
+        } else {
+            Aux2->prox->ant = Aux1;
         }
         free(Aux2);
         Lista->tamanho--;

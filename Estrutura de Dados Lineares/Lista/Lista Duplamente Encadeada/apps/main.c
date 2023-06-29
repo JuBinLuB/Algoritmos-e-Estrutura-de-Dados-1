@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lista.h"
+#include "lista_dupla.h"
 #include "interface.h"
 
 int main(void) {

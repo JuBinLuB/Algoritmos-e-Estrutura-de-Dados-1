@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "interface.h"
-#include "lista.h"
+#include "lista_dupla.h"
 
 void MSG_MENU() {
     system("cls");
