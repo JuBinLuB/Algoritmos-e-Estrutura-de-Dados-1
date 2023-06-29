@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "Lista.h"
 
 void FLVazia(TLista *Lista) {
@@ -37,7 +38,7 @@ TCelula *Pesquisar(TLista Lista, TProduto Item) {
     TCelula *Aux;
     Aux = Lista.primeiro;
 
-    while (Aux != NULL) {
+    while (Aux->prox != NULL) {
         if (Aux->prox->item.codigo == Item.codigo) {
             return Aux;
         }
@@ -61,7 +62,7 @@ void Excluir(TLista *Lista, TProduto *Item) {
         free(Aux2);
         Lista->tamanho--;
     } else {
-        printf("\nItem nao encontrado.\n");
+        printf("\n\tItem nao encontrado.\n");
     }
 }
 
@@ -75,4 +76,25 @@ void LiberarLista(TLista *Lista) {
         free(Aux2);
     }
     free(Aux1);
+}
+
+void LerProduto(TProduto *x) {
+    // Ler codigo.
+    printf("\tInforme o codigo: ");
+    fflush(stdin);
+    scanf("%d", &x->codigo);
+    // Ler nome.
+    printf("\tInforme o nome: ");
+    fflush(stdin);
+    fgets(x->nome, 49, stdin);
+    // Ler Preco.
+    printf("\tInforme o preco: ");
+    fflush(stdin);
+    scanf("%f", &x->preco);
+}
+
+void ImprimirProduto(TProduto x) {
+    printf("\n\tCodigo: %d", x.codigo);
+    printf("\n\tNome: %s", x.nome);
+    printf("\tPreco: R$%.2f\n", x.preco);
 }

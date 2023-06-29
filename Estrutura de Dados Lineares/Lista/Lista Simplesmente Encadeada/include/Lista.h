@@ -1,6 +1,9 @@
 #ifndef LISTA_H_INCLUDED
 #define LISTA_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct {
     char nome[20];
     int codigo;
@@ -31,5 +34,9 @@ TCelula *Pesquisar(TLista Lista, TProduto Item);
 void Excluir(TLista *Lista, TProduto *Item);
 
 void LiberarLista(TLista *Lista);
+
+void LerProduto(TProduto *x);
+
+void ImprimirProduto(TProduto x);
 
 #endif // LISTA_H_INCLUDED

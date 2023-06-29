@@ -10,7 +10,9 @@ LIBS = -l Lista -L $(LIB)
 
 all: lib myapps
 
-lib: $(OBJ)/Lista.o
+lib: \
+	$(OBJ)/Lista.o \
+	$(OBJ)/interface.o
 	ar -rcs $(LIB)/libLista.a $(OBJ)/*.o
 
 myapps: clean_apps \
