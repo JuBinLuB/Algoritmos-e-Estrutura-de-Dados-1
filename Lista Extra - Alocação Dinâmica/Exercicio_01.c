@@ -39,7 +39,6 @@ char *StrCat(char *destino, char *origem) {
         origem++;
     }
     *destino = '\0';
-
     return destino;
 }
 
