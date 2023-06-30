@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lista_dupla.h"
+#include "listaD.h"
 
 void MSG_MENU(); // MENSAGEM PARA EXIBIR O MENU PRINCIPAL
 

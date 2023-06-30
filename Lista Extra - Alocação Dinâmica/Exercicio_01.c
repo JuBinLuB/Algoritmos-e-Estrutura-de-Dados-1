@@ -9,6 +9,9 @@ int StrCmp(char *string1, char *string2);
 int main() {
 
     // a) Teste StrCat(char *destino, char *origem).
+    char destino[50] = {"Algoritmos e "};
+    StrCat(destino, "Estrutura de Dados");
+    printf("Resultado: |%s|\n", destino);
 
     // b) Teste StrLen(char *string).
     char str[] = {"Kaguya Shinomiya"};
@@ -25,6 +28,20 @@ int main() {
 }
 
 // Letra a)
+char *StrCat(char *destino, char *origem) {
+    while (*destino) {
+        destino++;
+    }
+
+    while (*origem) {
+        *destino = *origem;
+        destino++;
+        origem++;
+    }
+    *destino = '\0';
+
+    return destino;
+}
 
 // Letra b)
 int StrLen(char *string) {

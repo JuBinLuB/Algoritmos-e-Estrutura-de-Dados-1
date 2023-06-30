@@ -1,34 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lista_dupla.h"
+#include "listaD.h"
 
-void FLVazia(TLista *Lista) {
+void FLDVazia(TLista *Lista) {
     Lista->primeiro = (TCelula *)malloc(sizeof(TCelula));
     Lista->ultimo = Lista->primeiro;
-    Lista->primeiro->prox = NULL;
-    Lista->primeiro->ant = NULL;
+    Lista->primeiro->prox = Lista->primeiro;
+    Lista->primeiro->ant = Lista->primeiro;
     Lista->tamanho = 0;
 }
 
-int Vazia(TLista Lista) {
+int VaziaLD(TLista Lista) {
     return (Lista.primeiro == Lista.ultimo);
 }
 
-void Inserir(TProduto x, TLista *Lista) {
+void InserirLD(TProduto x, TLista *Lista) {
     Lista->ultimo->prox = (TCelula *)malloc(sizeof(TCelula));
     Lista->ultimo->prox->ant = Lista->ultimo;
     Lista->ultimo = Lista->ultimo->prox;
     Lista->ultimo->item = x;
-    Lista->ultimo->prox = NULL;
+    Lista->ultimo->prox = Lista->primeiro;
+    Lista->primeiro->ant = Lista->ultimo;
     Lista->tamanho++;
 }
 
-void Imprimir(TLista Lista) {
+void ImprimirLD(TLista Lista) {
     TCelula *Aux;
     Aux = Lista.primeiro->prox;
 
-    while (Aux != NULL) {
+    while (Aux != Lista.primeiro) {
         printf("\n\tCodigo: %d", Aux->item.codigo);
         printf("\n\tNome: %s", Aux->item.nome);
         printf("\tPreco: R$%.2f\n", Aux->item.preco);
@@ -36,12 +37,12 @@ void Imprimir(TLista Lista) {
     }
 }
 
-TCelula *Pesquisar(TLista Lista, TProduto Item) {
+TCelula *PesquisarLD(TLista Lista, TProduto Item) {
     TCelula *Aux;
-    Aux = Lista.primeiro;
+    Aux = Lista.primeiro->prox;
 
-    while (Aux->prox != NULL) {
-        if (Aux->prox->item.codigo == Item.codigo) {
+    while (Aux != Lista.primeiro) {
+        if (Aux->item.codigo == Item.codigo) {
             return Aux;
         }
         Aux = Aux->prox;
@@ -49,34 +50,33 @@ TCelula *Pesquisar(TLista Lista, TProduto Item) {
     return NULL;
 }
 
-void Excluir(TLista *Lista, TProduto *Item) {
-    TCelula *Aux1, *Aux2;
-    Aux1 = Pesquisar(*Lista, *Item);
+void ExcluirLD(TLista *Lista, TProduto *Item) {
+    TCelula *Aux;
+    Aux = PesquisarLD(*Lista, *Item);
 
-    if (Aux1 != NULL) {
-        Aux2 = Aux1->prox;
-        Aux1->prox = Aux2->prox;
-        *Item = Aux2->item;
+    if (Aux != NULL) {
+        Aux->ant->prox = Aux->prox;
+        Aux->prox->ant = Aux->ant;
+        *Item = Aux->item;
 
-        if (Aux1->prox == NULL) {
-            Lista->ultimo = Aux1;
-        } else {
-            Aux2->prox->ant = Aux1;
+        if (Aux->prox == Lista->primeiro) {
+            Lista->ultimo = Aux->ant;
         }
-        free(Aux2);
+        free(Aux);
         Lista->tamanho--;
     } else {
         printf("\n\tItem nao encontrado.\n");
     }
 }
 
-void LiberarLista(TLista *Lista) {
+void LiberarListaLD(TLista *Lista) {
     TCelula *Aux1, *Aux2;
     Aux1 = Lista->primeiro;
 
-    while (Aux1->prox != NULL) {
+    while (Aux1->prox != Lista->primeiro) {
         Aux2 = Aux1->prox;
         Aux1->prox = Aux2->prox;
+        Aux2->prox->ant = Aux1;
         free(Aux2);
     }
     free(Aux1);

@@ -1,5 +1,5 @@
-#ifndef LISTA_DUPLA_H_INCLUDED
-#define LISTA_DUPLA_H_INCLUDED
+#ifndef LISTAD_H_INCLUDED
+#define LISTAD_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,19 +22,19 @@ typedef struct {
     int tamanho;
 } TLista;
 
-void FLVazia(TLista *Lista);
+void FLDVazia(TLista *Lista);
 
-int Vazia(TLista Lista);
+int VaziaLD(TLista Lista);
 
-void Inserir(TProduto x, TLista *Lista);
+void InserirLD(TProduto x, TLista *Lista);
 
-void Imprimir(TLista Lista);
+void ImprimirLD(TLista Lista);
 
-TCelula *Pesquisar(TLista Lista, TProduto Item);
+TCelula *PesquisarLD(TLista Lista, TProduto Item);
 
-void Excluir(TLista *Lista, TProduto *Item);
+void ExcluirLD(TLista *Lista, TProduto *Item);
 
-void LiberarLista(TLista *Lista);
+void LiberarListaLD(TLista *Lista);
 
 void LerProduto(TProduto *x);
 

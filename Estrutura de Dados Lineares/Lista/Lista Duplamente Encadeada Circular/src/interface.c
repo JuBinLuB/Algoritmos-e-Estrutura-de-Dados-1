@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "interface.h"
-#include "lista_dupla.h"
+#include "listaD.h"
 
 void MSG_MENU() {
     system("cls");
@@ -30,7 +30,7 @@ void MENU(TLista *Lista) {
                 */
                 printf("\n\t#1 Inserir:\n");
                 LerProduto(&produto);
-                Inserir(produto, Lista);
+                InserirLD(produto, Lista);
                 break;
             case 2:
                 /**
@@ -41,12 +41,12 @@ void MENU(TLista *Lista) {
                 fflush(stdin);
                 scanf("%d", &produto.codigo);
 
-                TCelula *endereco = Pesquisar(*Lista, produto);
+                TCelula *endereco = PesquisarLD(*Lista, produto);
 
                 if (endereco) {
                     printf("\n\tItem encontrado: ");
-                    printf("\n\tEndereco: %p", endereco->prox);
-                    ImprimirProduto(endereco->prox->item);
+                    printf("\n\tEndereco: %p", endereco);
+                    ImprimirProduto(endereco->item);
                 } else {
                     printf("\n\tItem nao encontrado.\n");
                 }
@@ -61,7 +61,7 @@ void MENU(TLista *Lista) {
                 fflush(stdin);
                 scanf("%d", &produto.codigo);
 
-                Excluir(Lista, &produto);
+                ExcluirLD(Lista, &produto);
                 system("PAUSE");
                 break;
             case 4:
@@ -69,14 +69,14 @@ void MENU(TLista *Lista) {
                     Codigo para opcao de menu Imprimir
                 */
                 printf("\n\t#4 Imprimir:\n");
-                Imprimir(*Lista);
+                ImprimirLD(*Lista);
                 printf("\n\tTamanho da Lista: %d\n", Lista->tamanho);
                 system("PAUSE");
                 break;
             case 5:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
-                LiberarLista(Lista);
+                LiberarListaLD(Lista);
                 system("PAUSE");
                 break;
             default:
