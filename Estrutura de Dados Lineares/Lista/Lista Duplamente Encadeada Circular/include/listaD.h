@@ -4,11 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
-    char nome[20];
-    int codigo;
-    float preco;
-} TProduto;
+#include "utilidades.h"
 
 typedef struct celula {
     TProduto item;
@@ -22,22 +18,18 @@ typedef struct {
     int tamanho;
 } TLista;
 
-void FLDVazia(TLista *Lista);
+void FLDVazia(TLista *ListaD);
 
-int VaziaLD(TLista Lista);
+int VaziaLD(TLista ListaD);
 
-void InserirLD(TProduto x, TLista *Lista);
+void InserirLD(TProduto x, TLista *ListaD);
 
-void ImprimirLD(TLista Lista);
+void ImprimirLD(TLista ListaD);
 
-TCelula *PesquisarLD(TLista Lista, TProduto Item);
+TCelula *PesquisarLD(TLista ListaD, TProduto Item);
 
-void ExcluirLD(TLista *Lista, TProduto *Item);
+void ExcluirLD(TLista *ListaD, TProduto *Item);
 
-void LiberarListaLD(TLista *Lista);
-
-void LerProduto(TProduto *x);
-
-void ImprimirProduto(TProduto x);
+void LiberarListaLD(TLista *ListaD);
 
 #endif // LISTA_DUPLA_H_INCLUDED

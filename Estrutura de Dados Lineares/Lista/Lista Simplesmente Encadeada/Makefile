@@ -12,7 +12,8 @@ all: lib myapps
 
 lib: \
 	$(OBJ)/lista.o \
-	$(OBJ)/interface.o
+	$(OBJ)/interface.o \
+	$(OBJ)/utilidades.o
 	ar -rcs $(LIB)/liblista.a $(OBJ)/*.o
 
 myapps: clean_apps \
