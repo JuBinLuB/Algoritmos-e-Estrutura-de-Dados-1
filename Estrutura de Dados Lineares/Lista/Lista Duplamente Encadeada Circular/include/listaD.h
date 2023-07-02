@@ -32,4 +32,4 @@ void ExcluirLD(TLista *ListaD, TProduto *Item);
 
 void LiberarListaLD(TLista *ListaD);
 
-#endif // LISTA_DUPLA_H_INCLUDED
+#endif // LISTAD_H_INCLUDED
