@@ -75,6 +75,9 @@ void MENU(TLista *Lista) {
                 system("PAUSE");
                 break;
             case 5:
+                /**
+                    Codigo para opcao de menu Inverter
+                */
                 system("cls");
                 Inverter(Lista);
                 break;

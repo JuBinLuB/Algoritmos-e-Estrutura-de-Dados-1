@@ -76,6 +76,9 @@ void MENU(TLista *Lista) {
                 system("PAUSE");
                 break;
             case 5:
+                /**
+                    Codigo para opcao de menu Imprimir I-Celula
+                */
                 printf("\n\t#5 Imprimir I-Celula:\n");
                 int i = 0;
 

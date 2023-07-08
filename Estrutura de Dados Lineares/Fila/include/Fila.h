@@ -1,10 +1,10 @@
 #ifndef FILA_H_INCLUDED
 #define FILA_H_INCLUDED
 
-typedef struct item {
-    char nome[20];
-    int codigo;
-} TProduto;
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "utilidades.h"
 
 typedef struct celula {
     TProduto item;
@@ -18,5 +18,19 @@ typedef struct fila {
 } TFila;
 
 void FFVazia(TFila *Fila);
+
+int Vazia(TFila Fila);
+
+void Enfileirar(TProduto Item, TFila *Fila);
+
+void Desenfileirar(TFila *Fila, TProduto *Item);
+
+void Imprimir(TFila *Fila);
+
+int Pesquisar(TFila *Fila, TProduto *x);
+
+void LiberarFila(TFila *Fila);
+
+void copiarFila(TFila *F1, TFila *F2);
 
 #endif // FILA_H_INCLUDED

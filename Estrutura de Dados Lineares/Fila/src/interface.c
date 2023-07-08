@@ -1,24 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "interface.h"
-#include "lista.h"
+#include "fila.h"
 
 void MSG_MENU() {
     system("cls");
     printf("\n\n\t>>>>>>>>>>>>>>>>>>>>>>> OPCOES DE MENU <<<<<<<<<<<<<<<<<<<<<<<<");
-    printf("\n\n\t[1] - INSERIR");
+    printf("\n\n\t[1] - ENFILEIRAR");
     printf("  \n\t[2] - PESQUISAR");
-    printf("  \n\t[3] - EXCLUIR");
+    printf("  \n\t[3] - DESENFILEIRAR");
     printf("  \n\t[4] - IMPRIMIR");
-    printf("  \n\t[5] - CONCATENAR");
+    printf("  \n\t[5] - COPIAR");
     printf("  \n\t[6] - SAIR");
 }
 
-void MENU(TLista *Lista1) {
-    TLista Lista2;
+void MENU(TFila *Fila) {
     TProduto produto;
-    FLVazia(&Lista2);
     int opcao = 0;
 
     do {
@@ -29,27 +28,25 @@ void MENU(TLista *Lista1) {
         switch(opcao) {
             case 1:
                 /**
-                    Codigo para opcao de menu Inserir
+                    Codigo para opcao de menu Enfileirar
                 */
-                printf("\n\t#1 Inserir:\n");
+                printf("\n\t#1 Enfileirar:\n");
                 LerProduto(&produto);
-                Inserir(produto, Lista1);
+                Enfileirar(produto, Fila);
                 break;
             case 2:
                 /**
                     Codigo para opcao de menu Pesquisar
                 */
                 printf("\n\t#2 Pesquisar:\n");
-                printf("\tInforme o codigo do item: ");
+                printf("\tInforme o nome do item: ");
                 fflush(stdin);
-                scanf("%d", &produto.codigo);
+                fgets(produto.nome, 19, stdin);
 
-                TCelula *endereco = Pesquisar(*Lista1, produto);
+                int encontrado = Pesquisar(Fila, produto);
 
-                if (endereco) {
-                    printf("\n\tItem encontrado: ");
-                    printf("\n\tEndereco: %p", endereco->prox);
-                    ImprimirProduto(endereco->prox->item);
+                if (encontrado) {
+                    printf("\n\tItem encontrado.");
                 } else {
                     printf("\n\tItem nao encontrado.\n");
                 }
@@ -57,14 +54,12 @@ void MENU(TLista *Lista1) {
                 break;
             case 3:
                 /**
-                    Codigo para opcao de menu Excluir
+                    Codigo para opcao de menu Desenfileirar
                 */
-                printf("\n\t#3 Excluir:\n");
-                printf("\tInforme o codigo do item: ");
-                fflush(stdin);
-                scanf("%d", &produto.codigo);
-
-                Excluir(Lista1, &produto);
+                printf("\n\t#3 Desenfileirar:\n");
+                Desenfileirar(Fila, &produto);
+                printf("\n\tItem removido: ");
+                ImprimirProduto(produto);
                 system("PAUSE");
                 break;
             case 4:
@@ -72,20 +67,20 @@ void MENU(TLista *Lista1) {
                     Codigo para opcao de menu Imprimir
                 */
                 printf("\n\t#4 Imprimir:\n");
-                Imprimir(*Lista1);
-                printf("\n\tTamanho da Lista: %d\n", Lista1->tamanho);
+                Imprimir(Fila);
+                printf("\n\tTamanho da Fila: %d\n", Fila->tamanho);
                 system("PAUSE");
                 break;
             case 5:
                 /**
-                    Codigo para opcao de menu Concatenar
+                    Codigo para opcao de menu Inverter
                 */
-                Concatenar(&Lista1, &Lista2);
+                system("cls");
                 break;
             case 6:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
-                LiberarLista(Lista1);
+                LiberarFila(Fila);
                 system("PAUSE");
                 break;
             default:
