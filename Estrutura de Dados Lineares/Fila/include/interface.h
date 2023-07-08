@@ -8,6 +8,6 @@
 
 void MSG_MENU(); // MENSAGEM PARA EXIBIR O MENU PRINCIPAL
 
-void MENU(TFila *fila); // MODULO DE MENU
+void MENU(TFila *Fila); // MODULO DE MENU
 
 #endif // INTERFACE_H_INCLUDED

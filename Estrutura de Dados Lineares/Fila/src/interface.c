@@ -43,7 +43,7 @@ void MENU(TFila *Fila) {
                 fflush(stdin);
                 fgets(produto.nome, 19, stdin);
 
-                int encontrado = Pesquisar(Fila, produto);
+                int encontrado = Pesquisar(Fila, &produto);
 
                 if (encontrado) {
                     printf("\n\tItem encontrado.");
