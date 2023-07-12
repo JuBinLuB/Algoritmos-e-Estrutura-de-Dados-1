@@ -7,18 +7,19 @@
 void MSG_MENU() {
     system("cls");
     printf("\n\n\t>>>>>>>>>>>>>>>>>>>>>>> OPCOES DE MENU <<<<<<<<<<<<<<<<<<<<<<<<");
-    printf("\n\n\t[1] - INSERIR");
-    printf("  \n\t[2] - PESQUISAR");
-    printf("  \n\t[3] - EXCLUIR");
-    printf("  \n\t[4] - IMPRIMIR");
-    printf("  \n\t[5] - CONCATENAR");
-    printf("  \n\t[6] - SAIR");
+    printf("\n\n\t[1] - INSERIRL1");
+    printf("\n\n\t[2] - INSERIRL2");
+    printf("  \n\t[3] - PESQUISAR");
+    printf("  \n\t[4] - EXCLUIR");
+    printf("  \n\t[5] - IMPRIMIR");
+    printf("  \n\t[6] - CONCATENAR");
+    printf("  \n\t[7] - SAIR");
 }
 
-void MENU(TLista *Lista1) {
-    TLista Lista2;
+void MENU(TLista *L1) {
+    TLista L2;
     TProduto produto;
-    FLVazia(&Lista2);
+    FLVazia(&L2);
     int opcao = 0;
 
     do {
@@ -29,22 +30,30 @@ void MENU(TLista *Lista1) {
         switch(opcao) {
             case 1:
                 /**
-                    Codigo para opcao de menu Inserir
+                    Codigo para opcao de menu InserirL1
                 */
-                printf("\n\t#1 Inserir:\n");
+                printf("\n\t#1 InserirL1:\n");
                 LerProduto(&produto);
-                Inserir(produto, Lista1);
+                Inserir(produto, L1);
                 break;
             case 2:
                 /**
+                    Codigo para opcao de menu InserirL2
+                */
+                printf("\n\t#2 InserirL2:\n");
+                LerProduto(&produto);
+                Inserir(produto, &L2);
+            break;
+            case 3:
+                /**
                     Codigo para opcao de menu Pesquisar
                 */
-                printf("\n\t#2 Pesquisar:\n");
+                printf("\n\t#3 Pesquisar:\n");
                 printf("\tInforme o codigo do item: ");
                 fflush(stdin);
                 scanf("%d", &produto.codigo);
 
-                TCelula *endereco = Pesquisar(*Lista1, produto);
+                TCelula *endereco = Pesquisar(*L1, produto);
 
                 if (endereco) {
                     printf("\n\tItem encontrado: ");
@@ -55,37 +64,40 @@ void MENU(TLista *Lista1) {
                 }
                 system("PAUSE");
                 break;
-            case 3:
+            case 4:
                 /**
                     Codigo para opcao de menu Excluir
                 */
-                printf("\n\t#3 Excluir:\n");
+                printf("\n\t#4 Excluir:\n");
                 printf("\tInforme o codigo do item: ");
                 fflush(stdin);
                 scanf("%d", &produto.codigo);
 
-                Excluir(Lista1, &produto);
-                system("PAUSE");
-                break;
-            case 4:
-                /**
-                    Codigo para opcao de menu Imprimir
-                */
-                printf("\n\t#4 Imprimir:\n");
-                Imprimir(*Lista1);
-                printf("\n\tTamanho da Lista: %d\n", Lista1->tamanho);
+                Excluir(L1, &produto);
                 system("PAUSE");
                 break;
             case 5:
                 /**
-                    Codigo para opcao de menu Concatenar
+                    Codigo para opcao de menu Imprimir
                 */
-                Concatenar(&Lista1, &Lista2);
+                printf("\n\t#5 Imprimir:\n");
+                Imprimir(*L1);
+                printf("\n\tTamanho da Lista: %d\n", L1->tamanho);
+                system("PAUSE");
                 break;
             case 6:
+                /**
+                    Codigo para opcao de menu Concatenar
+                */
+                Concatenar(L1, &L2);
+                printf("\n\tListas concatenadas com sucesso!\n");
+                system("PAUSE");
+                break;
+            case 7:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
-                LiberarLista(Lista1);
+                LiberarLista(L1);
+                LiberarLista(&L2);
                 system("PAUSE");
                 break;
             default:
@@ -93,5 +105,5 @@ void MENU(TLista *Lista1) {
                 printf("\n\n\n\t >>>>>> MSG: Digite uma opcao valida!!! <<<<<< \n\n");
                 system("PAUSE");
             } // fim do bloco switch
-    } while(opcao != 6);
+    } while(opcao != 7);
 }

@@ -78,15 +78,24 @@ void LiberarLista(TLista *Lista) {
     free(Aux1);
 }
 
-void Concatenar(TLista *L1, TLista *L2) {
-    if (L1 == NULL || L2 == NULL) {
+void DividirLista(TLista *L1, TLista *L2, TLista *L3) {
+    if (L1 == NULL || L2 == NULL || L3 == NULL) {
         return;
     }
-    TCelula *Aux;
-    Aux = L2->primeiro->prox;
+    if (L1->tamanho == 1) {
+        return;
+    }
+    TCelula *Aux = L1->primeiro->prox;
+    int atual = 0;
+    int meio = L1->tamanho / 2;
 
     while (Aux != NULL) {
-        Inserir(Aux->item, L1);
+        if (atual < meio || (meio != 0 && atual == meio)) {
+            Inserir(Aux->item, L2);
+        } else {
+            Inserir(Aux->item, L3);
+        }
+        atual++;
         Aux = Aux->prox;
     }
 }

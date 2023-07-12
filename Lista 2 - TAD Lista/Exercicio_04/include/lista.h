@@ -31,6 +31,6 @@ void Excluir(TLista *Lista, TProduto *Item);
 
 void LiberarLista(TLista *Lista);
 
-void Concatenar(TLista *L1, TLista *L2);
+void DividirLista(TLista *L1, TLista *L2, TLista *L3);
 
 #endif // LISTA_H_INCLUDED
