@@ -3,11 +3,11 @@
 
 #include "interface.h"
 
-int main(void) {
-    TLista Lista;
+int main() {
+    TFila Fila;
+    
+    FFVazia(&Fila);
 
-    FLVazia(&Lista);
-
-    MENU(&Lista);
+    MENU(&Fila);
     return 0;
 }

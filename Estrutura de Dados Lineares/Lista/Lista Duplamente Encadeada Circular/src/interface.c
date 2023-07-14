@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "interface.h"
-#include "listaD.h"
 
 void MSG_MENU() {
     system("cls");

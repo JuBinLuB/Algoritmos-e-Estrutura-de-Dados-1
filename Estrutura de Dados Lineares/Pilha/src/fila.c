@@ -151,7 +151,5 @@ void InverterF(TFila *Fila) {
         Desenfileirar(&F3, &x);
         Enfileirar(x, Fila);
     }
-    free(F2.frente);
-    free(F3.frente);
 }
 */

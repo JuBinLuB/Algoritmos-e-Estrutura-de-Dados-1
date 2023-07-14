@@ -4,12 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utilidades.h"
-
-typedef struct celula {
-    TProduto item;
-    struct celula *prox;
-} TCelula;
+#include "util.h"
 
 typedef struct {
     TCelula *primeiro;
@@ -19,15 +14,15 @@ typedef struct {
 
 void FLVazia(TLista *Lista);
 
-int Vazia(TLista Lista);
+int VaziaL(TLista Lista);
 
-void Inserir(TProduto x, TLista *Lista);
+void InserirL(TProduto x, TLista *Lista);
 
-void Imprimir(TLista Lista);
+void ImprimirL(TLista Lista);
 
-TCelula *Pesquisar(TLista Lista, TProduto Item);
+TCelula *PesquisarL(TLista Lista, TProduto Item);
 
-void Excluir(TLista *Lista, TProduto *Item);
+void ExcluirL(TLista *Lista, TProduto *Item);
 
 void LiberarLista(TLista *Lista);
 

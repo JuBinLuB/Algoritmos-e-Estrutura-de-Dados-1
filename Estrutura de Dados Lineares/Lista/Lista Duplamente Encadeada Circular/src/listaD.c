@@ -30,9 +30,7 @@ void ImprimirLD(TLista ListaD) {
     Aux = ListaD.primeiro->prox;
 
     while (Aux != ListaD.primeiro) {
-        printf("\n\tCodigo: %d", Aux->item.codigo);
-        printf("\n\tNome: %s", Aux->item.nome);
-        printf("\tPreco: R$%.2f\n", Aux->item.preco);
+        ImprimirProduto(Aux->item);
         Aux = Aux->prox;
     }
 }

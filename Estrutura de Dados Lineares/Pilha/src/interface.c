@@ -6,14 +6,14 @@
 void MSG_MENU() {
     system("cls");
     printf("\n\n\t>>>>>>>>>>>>>>>>>>>>>>> OPCOES DE MENU <<<<<<<<<<<<<<<<<<<<<<<<");
-    printf("\n\n\t[1] - INSERIR");
+    printf("\n\n\t[1] - EMPILHAR");
     printf("  \n\t[2] - PESQUISAR");
-    printf("  \n\t[3] - EXCLUIR");
+    printf("  \n\t[3] - DESEMPILHAR");
     printf("  \n\t[4] - IMPRIMIR");
     printf("  \n\t[5] - SAIR");
 }
 
-void MENU(TLista *Lista) {
+void MENU(TPilha *Pilha) {
     TProduto produto;
     int opcao = 0;
 
@@ -25,11 +25,11 @@ void MENU(TLista *Lista) {
         switch(opcao) {
             case 1:
                 /**
-                    Codigo para opcao de menu Inserir
+                    Codigo para opcao de menu Empilhar
                 */
-                printf("\n\t#1 Inserir:\n");
+                printf("\n\t#1 Empilhar:\n");
                 LerProduto(&produto);
-                InserirL(produto, Lista);
+                Empilhar(produto, Pilha);
                 break;
             case 2:
                 /**
@@ -40,12 +40,11 @@ void MENU(TLista *Lista) {
                 fflush(stdin);
                 scanf("%d", &produto.codigo);
 
-                TCelula *endereco = PesquisarL(*Lista, produto);
+                int encontrado = PesquisarP(Pilha, &produto);
 
-                if (endereco) {
+                if (encontrado) {
                     printf("\n\tItem encontrado: ");
-                    printf("\n\tEndereco: %p", endereco->prox);
-                    ImprimirProduto(endereco->prox->item);
+                    ImprimirProduto(produto);
                 } else {
                     printf("\n\tItem nao encontrado.\n");
                 }
@@ -53,14 +52,9 @@ void MENU(TLista *Lista) {
                 break;
             case 3:
                 /**
-                    Codigo para opcao de menu Excluir
+                    Codigo para opcao de menu Desempilhar
                 */
-                printf("\n\t#3 Excluir:\n");
-                printf("\tInforme o codigo do item: ");
-                fflush(stdin);
-                scanf("%d", &produto.codigo);
-
-                ExcluirL(Lista, &produto);
+                Desempilhar(Pilha, &produto);
                 system("PAUSE");
                 break;
             case 4:
@@ -68,14 +62,14 @@ void MENU(TLista *Lista) {
                     Codigo para opcao de menu Imprimir
                 */
                 printf("\n\t#4 Imprimir:\n");
-                ImprimirL(*Lista);
-                printf("\n\tTamanho da Lista: %d\n", Lista->tamanho);
+                ImprimirP(Pilha);
+                printf("\n\tTamanho da Pilha: %d\n", Pilha->tamanho);
                 system("PAUSE");
                 break;
             case 5:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
-                LiberarLista(Lista);
+                LiberarPilha(Pilha);
                 system("PAUSE");
                 break;
             default:

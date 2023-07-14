@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include "interface.h"
-#include "fila.h"
 
 void MSG_MENU() {
     system("cls");
@@ -11,13 +10,17 @@ void MSG_MENU() {
     printf("\n\n\t[1] - ENFILEIRAR");
     printf("  \n\t[2] - PESQUISAR");
     printf("  \n\t[3] - DESENFILEIRAR");
-    printf("  \n\t[4] - IMPRIMIR");
-    printf("  \n\t[5] - COPIAR");
-    printf("  \n\t[6] - SAIR");
+    printf("  \n\t[4] - IMPRIMIR F1");
+    printf("  \n\t[5] - IMPRIMIR F2");
+    printf("  \n\t[6] - COPIAR");
+    printf("  \n\t[7] - INVERTER");
+    printf("  \n\t[8] - SAIR");
 }
 
 void MENU(TFila *Fila) {
+    TFila F2;
     TProduto produto;
+    FFVazia(&F2);
     int opcao = 0;
 
     do {
@@ -43,10 +46,10 @@ void MENU(TFila *Fila) {
                 fflush(stdin);
                 fgets(produto.nome, 19, stdin);
 
-                int encontrado = Pesquisar(Fila, &produto);
+                int encontrado = PesquisarF(Fila, &produto);
 
                 if (encontrado) {
-                    printf("\n\tItem encontrado.");
+                    printf("\n\tItem encontrado.\n");
                 } else {
                     printf("\n\tItem nao encontrado.\n");
                 }
@@ -64,23 +67,47 @@ void MENU(TFila *Fila) {
                 break;
             case 4:
                 /**
-                    Codigo para opcao de menu Imprimir
+                    Codigo para opcao de menu Imprimir F1
                 */
-                printf("\n\t#4 Imprimir:\n");
-                Imprimir(Fila);
+                printf("\n\t#4 Imprimir F1:\n");
+                ImprimirF(Fila);
                 printf("\n\tTamanho da Fila: %d\n", Fila->tamanho);
                 system("PAUSE");
                 break;
             case 5:
                 /**
-                    Codigo para opcao de menu Inverter
+                    Codigo para opcao de menu Imprimir F2
                 */
-                system("cls");
+                printf("\n\t#5 Imprimir F2:\n");
+                if (!VaziaF(F2)) {
+                    ImprimirF(&F2);
+                } else {
+                    printf("\n\tErro: Fila vazia.\n");
+                }
+                printf("\n\tTamanho da Fila: %d\n", F2.tamanho);
+                system("PAUSE");
                 break;
             case 6:
+                /**
+                    Codigo para opcao de menu Copiar
+                */
+                CopiarF(Fila, &F2);
+                printf("\n\tFila copiada.\n");
+                system("PAUSE");
+                break;
+            case 7:
+                /**
+                    Codigo para opcao de menu Inverter
+                */
+                InverterF(Fila);
+                printf("\n\tFila invertida.\n");
+                system("PAUSE");
+                break;
+            case 8:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
                 LiberarFila(Fila);
+                LiberarFila(&F2);
                 system("PAUSE");
                 break;
             default:
@@ -88,5 +115,5 @@ void MENU(TFila *Fila) {
                 printf("\n\n\n\t >>>>>> MSG: Digite uma opcao valida!!! <<<<<< \n\n");
                 system("PAUSE");
             } // fim do bloco switch
-    } while(opcao != 6);
+    } while(opcao != 8);
 }

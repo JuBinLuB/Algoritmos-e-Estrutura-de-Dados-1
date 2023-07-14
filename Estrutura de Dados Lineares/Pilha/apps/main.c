@@ -4,10 +4,10 @@
 #include "interface.h"
 
 int main(void) {
-    TLista Lista;
+    TPilha Pilha;
 
-    FLVazia(&Lista);
+    FPVazia(&Pilha);
 
-    MENU(&Lista);
+    MENU(&Pilha);
     return 0;
 }

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utilidades.h"
+#include "util.h"
 
 typedef struct celula {
     TProduto item;
