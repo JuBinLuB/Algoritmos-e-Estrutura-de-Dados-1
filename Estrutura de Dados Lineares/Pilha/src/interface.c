@@ -10,7 +10,8 @@ void MSG_MENU() {
     printf("  \n\t[2] - PESQUISAR");
     printf("  \n\t[3] - DESEMPILHAR");
     printf("  \n\t[4] - IMPRIMIR");
-    printf("  \n\t[5] - SAIR");
+    printf("  \n\t[5] - INVERTER");
+    printf("  \n\t[6] - SAIR");
 }
 
 void MENU(TPilha *Pilha) {
@@ -67,6 +68,14 @@ void MENU(TPilha *Pilha) {
                 system("PAUSE");
                 break;
             case 5:
+                /**
+                    Codigo para opcao de menu Inverter
+                */
+                InverterPA(Pilha);
+                printf("\n\tPilha invertida.\n");
+                system("PAUSE");
+                break;
+            case 6:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
                 LiberarPilha(Pilha);
@@ -77,5 +86,5 @@ void MENU(TPilha *Pilha) {
                 printf("\n\n\n\t >>>>>> MSG: Digite uma opcao valida!!! <<<<<< \n\n");
                 system("PAUSE");
             } // fim do bloco switch
-    } while(opcao != 5);
+    } while(opcao != 6);
 }
