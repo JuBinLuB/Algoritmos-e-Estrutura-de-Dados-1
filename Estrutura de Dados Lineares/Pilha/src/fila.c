@@ -119,35 +119,3 @@ void InverterF(TFila *Fila) {
         Enfileirar(x, Fila);
     }
 }
-/*
-void InverterF(TFila *Fila) {
-    TFila F2, F3;
-    TProduto x;
-    FFVazia(&F2);
-    FFVazia(&F3);
-    int n = Fila->tamanho;
-    int index = 0;
-
-    while (index < n) {
-        while (!VaziaF(*Fila)) {
-            Desenfileirar(Fila, &x);
-            if (index == Fila->tamanho) {
-                Enfileirar(x, &F3);
-                index++;
-            }
-            Enfileirar(x, &F2);
-        }
-
-        while (!VaziaF(F2)) {
-            Desenfileirar(&F2, &x);
-            Enfileirar (x, Fila);
-        }
-    }
-
-    while (!VaziaF(F3)) {
-        Desenfileirar(Fila, &x);
-        Desenfileirar(&F3, &x);
-        Enfileirar(x, Fila);
-    }
-}
-*/

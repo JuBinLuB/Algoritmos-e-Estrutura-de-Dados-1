@@ -79,19 +79,20 @@ int PesquisarP(TPilha *Pilha, TProduto *Item) {
         if (strcmp(x.nome, Item->nome) == 0) {
             encontrado = 1;
             *Item = x;
-        } else {
-            Item->codigo = -1;
         }
         Empilhar(x, Pilha);
     }
+    free(Aux.topo);
 
     if (encontrado) {
         return 1;
     } else {
+        Item->codigo = -1;
         return 0;
     }
 }
 
+// Inverter uma Pilha utilizando uma Fila.
 void InverterPA(TPilha *Pilha) {
     TFila Fila;
     TProduto x;
@@ -109,6 +110,7 @@ void InverterPA(TPilha *Pilha) {
     free(Fila.frente);
 }
 
+// Inverter uma Pilha utilizando duas Pilhas auxiliares.
 void InverterPB(TPilha *P1) {
     TPilha P2, P3;
     TProduto x;
@@ -136,6 +138,7 @@ void InverterPB(TPilha *P1) {
 // Transfere os elementos da Pilha P1 para P2 sem alterar a ordem dos elementos.
 void TransferirP(TPilha *P1, TPilha *P2) {
     TProduto x;
+    
     if (VaziaP(*P1)) {
         return;
     } else {
@@ -145,6 +148,7 @@ void TransferirP(TPilha *P1, TPilha *P2) {
     }
 }
 
+// Inverter uma Pilha utilizando somente uma Pilha auxiliar.
 void InverterPC(TPilha *Pilha) {
     TPilha Aux;
     TProduto x;
@@ -156,4 +160,5 @@ void InverterPC(TPilha *Pilha) {
         Desempilhar(&Aux, &x);
         Empilhar(x, Pilha);
     }
+    free(Aux.topo);
 }

@@ -10,8 +10,10 @@ void MSG_MENU() {
     printf("  \n\t[2] - PESQUISAR");
     printf("  \n\t[3] - DESEMPILHAR");
     printf("  \n\t[4] - IMPRIMIR");
-    printf("  \n\t[5] - INVERTER");
-    printf("  \n\t[6] - SAIR");
+    printf("  \n\t[5] - INVERTER(A)");
+    printf("  \n\t[6] - INVERTER(B)");
+    printf("  \n\t[7] - INVERTER(C)");
+    printf("  \n\t[8] - SAIR");
 }
 
 void MENU(TPilha *Pilha) {
@@ -37,9 +39,9 @@ void MENU(TPilha *Pilha) {
                     Codigo para opcao de menu Pesquisar
                 */
                 printf("\n\t#2 Pesquisar:\n");
-                printf("\tInforme o codigo do item: ");
+                printf("\tInforme o nome do item: ");
                 fflush(stdin);
-                scanf("%d", &produto.codigo);
+                fgets(produto.nome, 19, stdin);
 
                 int encontrado = PesquisarP(Pilha, &produto);
 
@@ -48,6 +50,7 @@ void MENU(TPilha *Pilha) {
                     ImprimirProduto(produto);
                 } else {
                     printf("\n\tItem nao encontrado.\n");
+                    printf("\n\tCodigo: %d\n", produto.codigo);
                 }
                 system("PAUSE");
                 break;
@@ -72,15 +75,32 @@ void MENU(TPilha *Pilha) {
                 break;
             case 5:
                 /**
-                    Codigo para opcao de menu Inverter
+                    Codigo para opcao de menu Inverter(A)
                 */
-                // InverterPA(Pilha);
-                // InverterPB(Pilha);
-                InverterPC(Pilha);
+                printf("\n\t#5 Inverter A:\n");
+                InverterPA(Pilha);
                 printf("\n\tPilha invertida.\n");
                 system("PAUSE");
                 break;
             case 6:
+                /**
+                    Codigo para opcao de menu Inverter(B)
+                */
+                printf("\n\t#6 Inverter A:\n");
+                InverterPB(Pilha);
+                printf("\n\tPilha invertida.\n");
+                system("PAUSE");
+                break;
+            case 7:
+                /**
+                    Codigo para opcao de menu Inverter(C)
+                */
+                printf("\n\t#7 Inverter C:\n");
+                InverterPC(Pilha);
+                printf("\n\tPilha invertida.\n");
+                system("PAUSE");
+                break;
+            case 8:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
                 LiberarPilha(Pilha);
@@ -91,5 +111,5 @@ void MENU(TPilha *Pilha) {
                 printf("\n\n\n\t >>>>>> MSG: Digite uma opcao valida!!! <<<<<< \n\n");
                 system("PAUSE");
             } // fim do bloco switch
-    } while(opcao != 6);
+    } while(opcao != 8);
 }
