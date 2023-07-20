@@ -106,6 +106,7 @@ void InverterPA(TPilha *Pilha) {
         Desenfileirar(&Fila, &x);
         Empilhar(x, Pilha);
     }
+    free(Fila.frente);
 }
 
 void InverterPB(TPilha *P1) {
@@ -128,6 +129,20 @@ void InverterPB(TPilha *P1) {
         Desempilhar(&P3, &x);
         Empilhar(x, P1);
     }
+    free(P2.topo);
+    free(P3.topo);
+}
+
+// Transfere os elementos da Pilha P1 para P2 sem alterar a ordem dos elementos.
+void TransferirP(TPilha *P1, TPilha *P2) {
+    TProduto x;
+    if (VaziaP(*P1)) {
+        return;
+    } else {
+        Desempilhar(P1, &x);
+        TransferirP(P1, P2);
+        Empilhar(x, P2);
+    }
 }
 
 void InverterPC(TPilha *Pilha) {
@@ -135,10 +150,7 @@ void InverterPC(TPilha *Pilha) {
     TProduto x;
     FPVazia(&Aux);
 
-    while (!VaziaP(*Pilha)) {
-        Desempilhar(Pilha, &x);
-        Empilhar(x, &Aux);
-    }
+    TransferirP(Pilha, &Aux);
 
     while (!VaziaP(Aux)) {
         Desempilhar(&Aux, &x);

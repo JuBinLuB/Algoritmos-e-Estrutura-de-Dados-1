@@ -55,7 +55,10 @@ void MENU(TPilha *Pilha) {
                 /**
                     Codigo para opcao de menu Desempilhar
                 */
+                printf("\n\t#3 Desempilhar:\n");
                 Desempilhar(Pilha, &produto);
+                printf("\n\tItem desempilhado:\n");
+                ImprimirProduto(produto);
                 system("PAUSE");
                 break;
             case 4:
@@ -71,7 +74,9 @@ void MENU(TPilha *Pilha) {
                 /**
                     Codigo para opcao de menu Inverter
                 */
-                InverterPA(Pilha);
+                // InverterPA(Pilha);
+                // InverterPB(Pilha);
+                InverterPC(Pilha);
                 printf("\n\tPilha invertida.\n");
                 system("PAUSE");
                 break;

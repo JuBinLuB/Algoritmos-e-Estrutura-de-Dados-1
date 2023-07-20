@@ -69,7 +69,11 @@ void MENU(TFila *Fila) {
                     Codigo para opcao de menu Imprimir F1
                 */
                 printf("\n\t#4 Imprimir F1:\n");
-                ImprimirF(Fila);
+                if (!VaziaF(*Fila)) {
+                    ImprimirF(Fila);
+                } else {
+                    printf("\n\tErro: Fila vazia.\n");
+                }
                 printf("\n\tTamanho da Fila: %d\n", Fila->tamanho);
                 system("PAUSE");
                 break;

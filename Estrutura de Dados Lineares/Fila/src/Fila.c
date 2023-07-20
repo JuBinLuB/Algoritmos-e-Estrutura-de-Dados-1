@@ -109,20 +109,18 @@ void CopiarF(TFila *F1, TFila *F2) {
 }
 
 void InverterF(TFila *Fila) {
+    TProduto x;
+    
     if (VaziaF(*Fila)) {
         return;
+    } else {
+        Desenfileirar(Fila, &x);
+        InverterF(Fila);
+        Enfileirar(x, Fila);
     }
-    TProduto x;
-    Desenfileirar(Fila, &x);
-    InverterF(Fila);
-    Enfileirar(x, Fila);
 }
-
 /*
 void InverterF(TFila *Fila) {
-    if (VaziaF(*Fila)) {
-        return;
-    }
     TFila F2, F3;
     TProduto x;
     FFVazia(&F2);

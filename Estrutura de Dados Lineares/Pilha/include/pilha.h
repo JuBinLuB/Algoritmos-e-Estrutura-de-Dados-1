@@ -33,4 +33,6 @@ void InverterPB(TPilha *Pilha);
 
 void InverterPC(TPilha *Pilha);
 
+void TransferirP(TPilha *P1, TPilha *P2);
+
 #endif // PILHA_H_INCLUDED
