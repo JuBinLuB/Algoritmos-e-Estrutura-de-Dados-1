@@ -10,11 +10,6 @@ typedef struct {
     float preco;
 } TProduto;
 
-typedef struct celula {
-    TProduto item;
-    struct celula *prox;
-} TCelula;
-
 void LerProduto(TProduto *x);
 
 void ImprimirProduto(TProduto x);

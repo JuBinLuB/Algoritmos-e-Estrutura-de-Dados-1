@@ -35,6 +35,8 @@ TCelula *Sucessor(TCelula *x);
 
 TCelula *Predecessor(TCelula *x);
 
+TCelula *criaNo(TProduto Item);
+
 void InserirA(TCelula **x, TCelula *pai, TProduto Item);
 
 void Transplante(TArvore *Arvore, TCelula **u, TCelula **v);

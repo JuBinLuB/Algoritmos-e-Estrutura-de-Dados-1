@@ -84,6 +84,15 @@ TCelula *Predecessor(TCelula *x) {
     return y;
 }
 
+TCelula *criaNo(TProduto Item){
+    TCelula *no = (TCelula*) malloc(sizeof(TCelula));
+    no->pai = NULL;
+    no->esq = NULL;
+    no->dir = NULL;
+    no->item = Item;
+    return no;
+}
+
 void InserirA(TCelula **x, TCelula *pai, TProduto Item) {
     if ((*x) == NULL) {
         (*x) = criaNo(Item);
@@ -116,7 +125,7 @@ void Transplante(TArvore *Arvore, TCelula **u, TCelula **v) {
 
 void Retirar(TArvore *Arvore, TCelula **z) {
     if (*z == NULL) {
-        printf("\n>>>>>> AVISO: NO' \"Z\" E' NULO! <<<<<\n");
+        printf("\n>>>>>> AVISO: NO' \"z\" E' NULO! <<<<<\n");
         return;
     }
     if ((*z)->esq == NULL) {
@@ -131,7 +140,7 @@ void Retirar(TArvore *Arvore, TCelula **z) {
             y->dir->pai = y;
         }
         Transplante(Arvore, z, &y);
-        y->esq = (*z)->pai;
+        y->esq = (*z)->esq;
         y->esq->pai = y;
     }
     free(*z);
