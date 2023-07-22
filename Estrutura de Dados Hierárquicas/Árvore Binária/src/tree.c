@@ -3,6 +3,10 @@
 
 #include "tree.h"
 
+void Iniciar(TCelula **no) {
+    *no = NULL;
+}
+
 void Central(TCelula *x) {
     if (x != NULL) {
         Central(x->esq);
@@ -110,6 +114,7 @@ void InserirA(TCelula **x, TCelula *pai, TProduto Item) {
     }
 }
 
+// Substitui subarvore enraizada no no' "u" pela subarvore enraizada no no' "v".
 void Transplante(TArvore *Arvore, TCelula **u, TCelula **v) {
     if ((*u)->pai == NULL) {
         Arvore->raiz = (*v);
@@ -123,6 +128,7 @@ void Transplante(TArvore *Arvore, TCelula **u, TCelula **v) {
     }
 }
 
+// Retira um no' "z" na arvore "Arvore".
 void Retirar(TArvore *Arvore, TCelula **z) {
     if (*z == NULL) {
         printf("\n>>>>>> AVISO: NO' \"z\" E' NULO! <<<<<\n");

@@ -11,13 +11,14 @@ typedef struct celula {
     struct celula *pai;
     struct celula *esq;
     struct celula *dir;
-
 } TCelula;
 
 typedef struct arvore {
     TCelula *raiz;
     int tamanho;
 } TArvore;
+
+void Iniciar(TCelula **no);
 
 void Central(TCelula *x);
 
