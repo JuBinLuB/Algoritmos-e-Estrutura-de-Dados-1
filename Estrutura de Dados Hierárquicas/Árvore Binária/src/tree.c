@@ -3,11 +3,11 @@
 
 #include "tree.h"
 
-void Iniciar(TCelula **no) {
+void Iniciar(TCelulaA **no) {
     *no = NULL;
 }
 
-void Central(TCelula *x) {
+void Central(TCelulaA *x) {
     if (x != NULL) {
         Central(x->esq);
         ImprimirProduto(x->item);
@@ -15,7 +15,7 @@ void Central(TCelula *x) {
     }
 }
 
-void PreOrdem(TCelula *x) {
+void PreOrdem(TCelulaA *x) {
     if (x != NULL) {
         ImprimirProduto(x->item);
         PreOrdem(x->esq);
@@ -23,7 +23,7 @@ void PreOrdem(TCelula *x) {
     }
 }
 
-void PosOrdem(TCelula *x) {
+void PosOrdem(TCelulaA *x) {
     if (x != NULL) {
         PosOrdem(x->esq);
         PosOrdem(x->dir);
@@ -31,7 +31,7 @@ void PosOrdem(TCelula *x) {
     }
 }
 
-TCelula *PesquisarA(TCelula *x, TProduto Item) {
+TCelulaA *PesquisarA(TCelulaA *x, TProduto Item) {
     if (x == NULL || x->item.codigo == Item.codigo) {
         return x;
     }
@@ -42,7 +42,7 @@ TCelula *PesquisarA(TCelula *x, TProduto Item) {
     }
 }
 
-TCelula *Maximo(TCelula *x) {
+TCelulaA *Maximo(TCelulaA *x) {
     if (x == NULL || x->dir == NULL) {
         return x;
     } else {
@@ -50,7 +50,7 @@ TCelula *Maximo(TCelula *x) {
     }
 }
 
-TCelula *Minimo(TCelula *x) {
+TCelulaA *Minimo(TCelulaA *x) {
     if (x == NULL || x->esq == NULL) {
         return x;
     } else {
@@ -58,14 +58,14 @@ TCelula *Minimo(TCelula *x) {
     }
 }
 
-TCelula *Sucessor(TCelula *x) {
+TCelulaA *Sucessor(TCelulaA *x) {
     if (x == NULL) {
         return NULL;
     }
     if (x->dir != NULL) {
         return Minimo(x->dir);
     }
-    TCelula *y = x->pai;
+    TCelulaA *y = x->pai;
     while (y != NULL && x == y->dir) {
         x = y;
         y = y->pai;
@@ -73,14 +73,14 @@ TCelula *Sucessor(TCelula *x) {
     return y;
 }
 
-TCelula *Predecessor(TCelula *x) {
+TCelulaA *Predecessor(TCelulaA *x) {
     if (x == NULL) {
         return NULL;
     }
     if (x->esq != NULL) {
         return Maximo(x->esq);
     }
-    TCelula *y = x->pai;
+    TCelulaA *y = x->pai;
     while (y != NULL && x == y->esq) {
         x = y;
         y = y->pai;
@@ -88,8 +88,8 @@ TCelula *Predecessor(TCelula *x) {
     return y;
 }
 
-TCelula *criaNo(TProduto Item){
-    TCelula *no = (TCelula*)malloc(sizeof(TCelula));
+TCelulaA *criaNo(TProduto Item){
+    TCelulaA *no = (TCelulaA*)malloc(sizeof(TCelulaA));
     no->pai = NULL;
     no->esq = NULL;
     no->dir = NULL;
@@ -97,7 +97,7 @@ TCelula *criaNo(TProduto Item){
     return no;
 }
 
-void InserirA(TCelula **x, TCelula *pai, TProduto Item) {
+void InserirA(TCelulaA **x, TCelulaA *pai, TProduto Item) {
     if ((*x) == NULL) {
         (*x) = criaNo(Item);
         if (pai != NULL) {
@@ -115,7 +115,7 @@ void InserirA(TCelula **x, TCelula *pai, TProduto Item) {
 }
 
 // Substitui subarvore enraizada no no' "u" pela subarvore enraizada no no' "v".
-void Transplante(TArvore *Arvore, TCelula **u, TCelula **v) {
+void Transplante(TArvore *Arvore, TCelulaA **u, TCelulaA **v) {
     if ((*u)->pai == NULL) {
         Arvore->raiz = (*v);
     } else if ((*u) == (*u)->pai->esq) {
@@ -129,7 +129,7 @@ void Transplante(TArvore *Arvore, TCelula **u, TCelula **v) {
 }
 
 // Retira um no' "z" na arvore "Arvore".
-void Retirar(TArvore *Arvore, TCelula **z) {
+void Retirar(TArvore *Arvore, TCelulaA **z) {
     if (*z == NULL) {
         printf("\n>>>>>> AVISO: NO' \"z\" E' NULO! <<<<<\n");
         return;
@@ -139,7 +139,7 @@ void Retirar(TArvore *Arvore, TCelula **z) {
     } else if ((*z)->dir == NULL) {
         Transplante(Arvore, z, &(*z)->esq);
     } else {
-        TCelula *y = Minimo((*z)->dir);
+        TCelulaA *y = Minimo((*z)->dir);
         if (y->pai != (*z)) {
             Transplante(Arvore, &y, &y->dir);
             y->dir = (*z)->dir;
@@ -154,26 +154,26 @@ void Retirar(TArvore *Arvore, TCelula **z) {
 }
 
 /*
-    >>>>> Lista de Exercicios <<<<<
+    >>>>> Lista de Exercicios TAD Arvore <<<<<
 */
 
 // Questao 06 - Versao iterativa de in-ordem.
-void CentralIterativa(TCelula *x) {
-    int visitado = 0;
+void CentralIterativa(TCelulaA *x) {
+    int foiVisitado = 0;
 
     while (x != NULL) {
-        if (!visitado) {
+        if (!foiVisitado) {
             while (x->esq != NULL) {
                 x = x->esq;
             }
         }
 
         ImprimirProduto(x->item);
-        visitado = 1;
+        foiVisitado = 1;
 
         if (x->dir != NULL) {
             x = x->dir;
-            visitado = 0;
+            foiVisitado = 0;
         } else if (x->pai != NULL) {
             while (x->pai != NULL && x == x->pai->dir) {
                 x = x->pai;
@@ -189,19 +189,19 @@ void CentralIterativa(TCelula *x) {
     }
 }
 
-// Questao 06 - Versao iterativa de pre-ordem.
-void PreOrdemIterativa(TCelula *x) {
+// // Questao 06 - Versao iterativa de pre-ordem.
+// void PreOrdemIterativa(TCelulaA *x) {
 
-}
+// }
 
-// Questao 06 - Versao iterativa de pos-ordem.
-void PosOrdemIterativa(TCelula *x) {
+// // Questao 06 - Versao iterativa de pos-ordem.
+// void PosOrdemIterativa(TCelulaA *x) {
 
-}
+// }
 
 // Questao 07 - Versao iterativa da funcao Inserir.
-void InserirIterativa(TCelula **raiz, TProduto Item) {
-    TCelula *Aux1, *Aux2;
+void InserirIterativa(TCelulaA **raiz, TProduto Item) {
+    TCelulaA *Aux1, *Aux2;
     Aux1 = *raiz;
     Aux2 = NULL;
 
@@ -227,25 +227,31 @@ void InserirIterativa(TCelula **raiz, TProduto Item) {
 }
 
 // Questao 08 - Versao iterativa de in-ordem utilizando TAD Pilha como estrutura de dados auxiliar.
-void CentralP(TCelula *x) {
-    TCelula *Aux = x;
-    TProduto produto;
+void CentralPilha(TCelulaA *x) {
+    TCelulaA *Aux1, *Aux2;
     TPilha Pilha;
+    TProduto produto;
     FPVazia(&Pilha);
 
+    Aux1 = x;
+    Aux2 = NULL;
     int finalizado = 0;
+
     while (!finalizado) {
-        if (Aux != NULL) {
-            Empilhar(Aux->item, &Pilha);
-            Aux = Aux->esq;
+        if (Aux1 != NULL) {
+            Empilhar(Aux1->item, &Pilha);
+            Aux2 = Aux1;
+            Aux1 = Aux2->esq;
         } else {
             if (!VaziaP(Pilha)) {
                 Desempilhar(&Pilha, &produto);
                 ImprimirProduto(produto);
-                Aux = Aux->dir;
+                Aux1 = Aux2->dir;
+                Aux2 = Aux2->pai;
             } else {
                 finalizado = 1;
             }
         }
+
     }
 }

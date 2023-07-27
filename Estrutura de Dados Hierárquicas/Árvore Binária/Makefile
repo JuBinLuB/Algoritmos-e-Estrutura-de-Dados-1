@@ -12,6 +12,7 @@ all: lib myapps
 
 lib: \
 	$(OBJ)/tree.o \
+	$(OBJ)/pilha.o \
 	$(OBJ)/interface.o \
 	$(OBJ)/util.o
 	ar -rcs $(LIB)/libtree.a $(OBJ)/*.o

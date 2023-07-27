@@ -8,44 +8,44 @@
 #include "pilha.h"
 
 typedef struct arvore {
-    TCelula *raiz;
+    TCelulaA *raiz;
     int tamanho;
 } TArvore;
 
-void Iniciar(TCelula **no);
+void Iniciar(TCelulaA **no);
 
-void Central(TCelula *x);
+void Central(TCelulaA *x);
 
-void PreOrdem(TCelula *x);
+void PreOrdem(TCelulaA *x);
 
-void PosOrdem(TCelula *x);
+void PosOrdem(TCelulaA *x);
 
-TCelula *PesquisarA(TCelula *x, TProduto Item);
+TCelulaA *PesquisarA(TCelulaA *x, TProduto Item);
 
-TCelula *Maximo(TCelula *x);
+TCelulaA *Maximo(TCelulaA *x);
 
-TCelula *Minimo(TCelula *x);
+TCelulaA *Minimo(TCelulaA *x);
 
-TCelula *Sucessor(TCelula *x);
+TCelulaA *Sucessor(TCelulaA *x);
 
-TCelula *Predecessor(TCelula *x);
+TCelulaA *Predecessor(TCelulaA *x);
 
-TCelula *criaNo(TProduto Item);
+TCelulaA *criaNo(TProduto Item);
 
-void InserirA(TCelula **x, TCelula *pai, TProduto Item);
+void InserirA(TCelulaA **x, TCelulaA *pai, TProduto Item);
 
-void Transplante(TArvore *Arvore, TCelula **u, TCelula **v);
+void Transplante(TArvore *Arvore, TCelulaA **u, TCelulaA **v);
 
-void Retirar(TArvore *Arvore, TCelula **z);
+void Retirar(TArvore *Arvore, TCelulaA **z);
 
-void CentralIterativa(TCelula *x);
+void CentralIterativa(TCelulaA *x);
 
-void PreOrdemIterativa(TCelula *x);
+void PreOrdemIterativa(TCelulaA *x);
 
-void PosOrdemIterativa(TCelula *x);
+void PosOrdemIterativa(TCelulaA *x);
 
-void InserirIterativa(TCelula **x, TProduto Item);
+void InserirIterativa(TCelulaA **x, TProduto Item);
 
-void CentralP(TCelula *x);
+void CentralPilha(TCelulaA *x);
 
 #endif // TREE_H_INCLUDED

@@ -5,7 +5,7 @@
 #include "pilha.h"
 
 void FPVazia(TPilha *Pilha) {
-    Pilha->topo = (TCelula *)malloc(sizeof(TCelula));
+    Pilha->topo = (TCelulaP *)malloc(sizeof(TCelulaP));
     Pilha->fundo = Pilha->topo;
     Pilha->topo->prox = NULL;
     Pilha->tamanho = 0;
@@ -16,8 +16,8 @@ int VaziaP(TPilha Pilha) {
 }
 
 void Empilhar(TProduto x, TPilha *Pilha) {
-    TCelula *Aux;
-    Aux = (TCelula *)malloc(sizeof(TCelula));
+    TCelulaP *Aux;
+    Aux = (TCelulaP *)malloc(sizeof(TCelulaP));
     Pilha->topo->item = x;
     Aux->prox = Pilha->topo;
     Pilha->topo = Aux;
@@ -25,7 +25,7 @@ void Empilhar(TProduto x, TPilha *Pilha) {
 }
 
 void Desempilhar(TPilha *Pilha, TProduto *Item) {
-    TCelula *q;
+    TCelulaP *q;
 
     if (VaziaP(*Pilha)) {
         printf("Erro: Pilha Vazia!\n");

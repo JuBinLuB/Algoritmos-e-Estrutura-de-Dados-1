@@ -7,8 +7,8 @@
 #include "util.h"
 
 typedef struct {
-    TCelula *fundo;
-    TCelula *topo;
+    TCelulaP *fundo;
+    TCelulaP *topo;
     int tamanho;
 } TPilha;
 

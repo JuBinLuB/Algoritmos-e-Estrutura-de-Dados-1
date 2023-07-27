@@ -10,17 +10,17 @@ typedef struct {
     float preco;
 } TProduto;
 
-typedef struct celula {
+typedef struct celulaP {
     TProduto item;
-    struct celula *prox;
-} TCelula;
+    struct celulaP *prox;
+} TCelulaP;
 
-typedef struct celula {
+typedef struct celulaA {
     TProduto item;
-    struct celula *pai;
-    struct celula *esq;
-    struct celula *dir;
-} TCelula;
+    struct celulaA *pai;
+    struct celulaA *esq;
+    struct celulaA *dir;
+} TCelulaA;
 
 void LerProduto(TProduto *x);
 

@@ -20,7 +20,7 @@ void MSG_MENU() {
 }
 
 void MENU(TArvore *Arvore) {
-    TCelula *y;
+    TCelulaA *y;
     TProduto produto;
     int opcao = 0;
 
@@ -87,7 +87,7 @@ void MENU(TArvore *Arvore) {
                 printf("\n\t#4 Caminhamento in-ordem:\n");
                 // Central(Arvore->raiz);
                 // CentralIterativa(Arvore->raiz);
-                CentralP(Arvore->raiz);
+                CentralPilha(Arvore->raiz);
                 printf("\n");
                 system("PAUSE");
                 break;
