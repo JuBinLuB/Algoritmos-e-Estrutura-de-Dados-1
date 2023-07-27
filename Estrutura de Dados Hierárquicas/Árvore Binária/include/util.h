@@ -10,6 +10,18 @@ typedef struct {
     float preco;
 } TProduto;
 
+typedef struct celula {
+    TProduto item;
+    struct celula *prox;
+} TCelula;
+
+typedef struct celula {
+    TProduto item;
+    struct celula *pai;
+    struct celula *esq;
+    struct celula *dir;
+} TCelula;
+
 void LerProduto(TProduto *x);
 
 void ImprimirProduto(TProduto x);

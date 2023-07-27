@@ -5,13 +5,7 @@
 #include <stdlib.h>
 
 #include "util.h"
-
-typedef struct celula {
-    TProduto item;
-    struct celula *pai;
-    struct celula *esq;
-    struct celula *dir;
-} TCelula;
+#include "pilha.h"
 
 typedef struct arvore {
     TCelula *raiz;
@@ -43,5 +37,15 @@ void InserirA(TCelula **x, TCelula *pai, TProduto Item);
 void Transplante(TArvore *Arvore, TCelula **u, TCelula **v);
 
 void Retirar(TArvore *Arvore, TCelula **z);
+
+void CentralIterativa(TCelula *x);
+
+void PreOrdemIterativa(TCelula *x);
+
+void PosOrdemIterativa(TCelula *x);
+
+void InserirIterativa(TCelula **x, TProduto Item);
+
+void CentralP(TCelula *x);
 
 #endif // TREE_H_INCLUDED

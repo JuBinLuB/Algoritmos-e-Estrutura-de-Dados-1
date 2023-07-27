@@ -92,24 +92,6 @@ int PesquisarP(TPilha *Pilha, TProduto *Item) {
     }
 }
 
-// Inverter uma Pilha utilizando uma Fila.
-void InverterPA(TPilha *Pilha) {
-    TFila Fila;
-    TProduto x;
-    FFVazia(&Fila);
-
-    while (!VaziaP(*Pilha)) {
-        Desempilhar(Pilha, &x);
-        Enfileirar(x, &Fila);
-    }
-
-    while (!VaziaF(Fila)) {
-        Desenfileirar(&Fila, &x);
-        Empilhar(x, Pilha);
-    }
-    free(Fila.frente);
-}
-
 // Inverter uma Pilha utilizando duas Pilhas auxiliares.
 void InverterPB(TPilha *P1) {
     TPilha P2, P3;

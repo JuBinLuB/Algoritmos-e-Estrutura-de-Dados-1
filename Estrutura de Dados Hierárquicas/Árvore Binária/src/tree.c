@@ -10,14 +10,14 @@ void Iniciar(TCelula **no) {
 void Central(TCelula *x) {
     if (x != NULL) {
         Central(x->esq);
-        printf("%d", x->item.codigo);
+        ImprimirProduto(x->item);
         Central(x->dir);
     }
 }
 
 void PreOrdem(TCelula *x) {
     if (x != NULL) {
-        printf("%d", x->item.codigo);
+        ImprimirProduto(x->item);
         PreOrdem(x->esq);
         PreOrdem(x->dir);
     }
@@ -27,7 +27,7 @@ void PosOrdem(TCelula *x) {
     if (x != NULL) {
         PosOrdem(x->esq);
         PosOrdem(x->dir);
-        printf("%d", x->item.codigo);
+        ImprimirProduto(x->item);
     }
 }
 
@@ -37,7 +37,7 @@ TCelula *PesquisarA(TCelula *x, TProduto Item) {
     }
     if (Item.codigo < x->item.codigo) {
         return PesquisarA(x->esq, Item);
-    } else if (Item.codigo > x->item.codigo) {
+    } else {
         return PesquisarA(x->dir, Item);
     }
 }
@@ -89,7 +89,7 @@ TCelula *Predecessor(TCelula *x) {
 }
 
 TCelula *criaNo(TProduto Item){
-    TCelula *no = (TCelula*) malloc(sizeof(TCelula));
+    TCelula *no = (TCelula*)malloc(sizeof(TCelula));
     no->pai = NULL;
     no->esq = NULL;
     no->dir = NULL;
@@ -151,4 +151,101 @@ void Retirar(TArvore *Arvore, TCelula **z) {
     }
     free(*z);
     *z = NULL;
+}
+
+/*
+    >>>>> Lista de Exercicios <<<<<
+*/
+
+// Questao 06 - Versao iterativa de in-ordem.
+void CentralIterativa(TCelula *x) {
+    int visitado = 0;
+
+    while (x != NULL) {
+        if (!visitado) {
+            while (x->esq != NULL) {
+                x = x->esq;
+            }
+        }
+
+        ImprimirProduto(x->item);
+        visitado = 1;
+
+        if (x->dir != NULL) {
+            x = x->dir;
+            visitado = 0;
+        } else if (x->pai != NULL) {
+            while (x->pai != NULL && x == x->pai->dir) {
+                x = x->pai;
+            }
+
+            if (x->pai == NULL) {
+                break;
+            }
+            x = x->pai;
+        } else {
+            break;
+        }
+    }
+}
+
+// Questao 06 - Versao iterativa de pre-ordem.
+void PreOrdemIterativa(TCelula *x) {
+
+}
+
+// Questao 06 - Versao iterativa de pos-ordem.
+void PosOrdemIterativa(TCelula *x) {
+
+}
+
+// Questao 07 - Versao iterativa da funcao Inserir.
+void InserirIterativa(TCelula **raiz, TProduto Item) {
+    TCelula *Aux1, *Aux2;
+    Aux1 = *raiz;
+    Aux2 = NULL;
+
+    while (Aux1 != NULL) {
+        Aux2 = Aux1;
+        if (Item.codigo < Aux1->item.codigo) {
+            Aux1 = Aux1->esq;
+        } else {
+            Aux1 = Aux1->dir;
+        }
+    }
+
+    Aux1 = criaNo(Item);
+    Aux1->pai = Aux2;
+
+    if (Aux2 == NULL) {
+        *raiz = Aux1;
+    } else if (Item.codigo < Aux2->item.codigo) {
+        Aux2->esq = Aux1;
+    } else {
+        Aux2->dir = Aux1;
+    }
+}
+
+// Questao 08 - Versao iterativa de in-ordem utilizando TAD Pilha como estrutura de dados auxiliar.
+void CentralP(TCelula *x) {
+    TCelula *Aux = x;
+    TProduto produto;
+    TPilha Pilha;
+    FPVazia(&Pilha);
+
+    int finalizado = 0;
+    while (!finalizado) {
+        if (Aux != NULL) {
+            Empilhar(Aux->item, &Pilha);
+            Aux = Aux->esq;
+        } else {
+            if (!VaziaP(Pilha)) {
+                Desempilhar(&Pilha, &produto);
+                ImprimirProduto(produto);
+                Aux = Aux->dir;
+            } else {
+                finalizado = 1;
+            }
+        }
+    }
 }
