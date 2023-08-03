@@ -85,9 +85,14 @@ void MENU(TArvore *Arvore) {
                     Codigo para opcao de menu In-Ordem
                 */
                 printf("\n\t#4 Caminhamento in-ordem:\n");
-                // Central(Arvore->raiz);
-                // CentralIterativa(Arvore->raiz);
-                CentralPilha(Arvore->raiz);
+
+                if (Arvore->raiz != NULL) {
+                    // Central(Arvore->raiz);
+                    CentralIterativa(Arvore->raiz);
+                    // CentralPilha(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
                 printf("\n");
                 system("PAUSE");
                 break;
@@ -96,7 +101,13 @@ void MENU(TArvore *Arvore) {
                     Codigo para opcao de menu Pre-Ordem
                 */
                 printf("\n\t#5 Caminhamento pre-ordem:\n");
-                PreOrdem(Arvore->raiz);
+
+                if (Arvore->raiz != NULL) {
+                    // PreOrdem(Arvore->raiz);
+                    PreOrdemIterativa(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
                 printf("\n");
                 system("PAUSE");
                 break;
@@ -105,7 +116,13 @@ void MENU(TArvore *Arvore) {
                     Codigo para opcao de menu Pos-Ordem
                 */
                 printf("\n\t#6 Caminhamento pos-ordem:\n");
-                PosOrdem(Arvore->raiz);
+
+                if (Arvore->raiz != NULL) {
+                    // PosOrdem(Arvore->raiz);
+                    PosOrdemIterativa(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
                 printf("\n");
                 system("PAUSE");
                 break;
@@ -118,6 +135,8 @@ void MENU(TArvore *Arvore) {
 
                 if (y != NULL) {
                     ImprimirProduto(y->item);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
                 }
                 printf("\n");
                 system("PAUSE");
@@ -131,6 +150,8 @@ void MENU(TArvore *Arvore) {
 
                 if (y != NULL) {
                     ImprimirProduto(y->item);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
                 }
                 printf("\n");
                 system("PAUSE");
