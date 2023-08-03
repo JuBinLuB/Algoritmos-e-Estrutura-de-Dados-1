@@ -153,9 +153,9 @@ void Retirar(TArvore *Arvore, TCelulaA **z) {
     *z = NULL;
 }
 
-/************************************
- * Lista de Exercicios TAD Arvore
- ************************************/
+/******************************
+ * Lista de Exercicios
+ ******************************/
 
 // Questao 06 - Versao iterativa de in-ordem.
 void CentralIterativa(TCelulaA *raiz) {
@@ -163,38 +163,29 @@ void CentralIterativa(TCelulaA *raiz) {
     int foiVisitado = 0;
 
     while (Aux != NULL) {
-        // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
-        if (!foiVisitado) {
-            // Enquanto a celula atual tiver um filho a esquerda, o caminhamento continua para a esquerda.
-            while (Aux->esq != NULL) {
+        if (!foiVisitado) { // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
+            while (Aux->esq != NULL) { // Enquanto a celula atual tiver um filho a esquerda, o caminhamento continua para a esquerda.
                 Aux = Aux->esq;
             }
         }
 
-        // Imprime o item da celula atual.
-        ImprimirProduto(Aux->item);
-        // Sinaliza que o filho a esquerda ja foi visitado.
-        foiVisitado = 1;
+        ImprimirProduto(Aux->item); // Imprime o item da celula atual.
+        foiVisitado = 1; // Sinaliza que o filho a esquerda ja foi visitado.
 
-        // Verifica se a celula atual tem filho a direita.
-        if (Aux->dir != NULL) {
+        if (Aux->dir != NULL) { // Verifica se a celula atual tem filho a direita.
             Aux = Aux->dir;
-            // Filho a esquerda da nova celula ainda nao foi visitado.
-            foiVisitado = 0;
+            foiVisitado = 0; // Filho a esquerda da nova celula ainda nao foi visitado.
         } else if (Aux->pai != NULL) {
-            // Enquanto Aux tiver pai e for um filho a direita de seu pai.
-            while (Aux->pai != NULL && Aux == Aux->pai->dir) {
+            while (Aux->pai != NULL && Aux == Aux->pai->dir) { // Enquanto Aux tiver pai e for um filho a direita de seu pai.
                 Aux = Aux->pai;
             }
 
-            // Se o pai da celula atual for nulo, termine o caminhamento.
-            if (Aux->pai == NULL) {
+            if (Aux->pai == NULL) { // Se o pai da celula atual for nulo, termine o caminhamento.
                 break;
             }
             Aux = Aux->pai;
         } else {
-            // Se a celula, atual nao tiver filho a direita, nem pai, termine o caminhamento.
-            break;
+            break; // Se a celula atual nao tiver filho a direita, nem pai, termine o caminhamento.
         }
     }
 }
@@ -205,41 +196,31 @@ void PreOrdemIterativa(TCelulaA *raiz) {
     int esqVisitada = 0;
 
     while (Aux != NULL) {
-        // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
-        if (!esqVisitada) {
-            // Imprime o item da celula atual.
-            ImprimirProduto(Aux->item);
+        if (!esqVisitada) { // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
+            ImprimirProduto(Aux->item); // Imprime o item da celula atual.
 
-            // Verifica se a celula atual tem filho a esquerda.
-            if (Aux->esq != NULL) {
+            if (Aux->esq != NULL) { // Verifica se a celula atual tem filho a esquerda.
                 Aux = Aux->esq;
-                // Passa para a proxima iteracao do loop.
-                continue;
+                continue; // Passa para a proxima iteracao do loop.
             }
         }
 
-        // Sinaliza que o filho a esquerda ja foi visitado.
-        esqVisitada = 1;
+        esqVisitada = 1; // Sinaliza que o filho a esquerda ja foi visitado.
 
-        // Verifica se a celula atual tem filho a direita.
-        if (Aux->dir != NULL) {
+        if (Aux->dir != NULL) { // Verifica se a celula atual tem filho a direita.
             Aux = Aux->dir;
-            // Filho a esquerda da nova celula ainda nao foi visitado.
-            esqVisitada = 0;
+            esqVisitada = 0; // Filho a esquerda da nova celula ainda nao foi visitado.
         } else if (Aux->pai != NULL) {
-            // Enquanto Aux tiver pai e for um filho a direita de seu pai.
-            while (Aux->pai != NULL && Aux == Aux->pai->dir) {
+            while (Aux->pai != NULL && Aux == Aux->pai->dir) { // Enquanto Aux tiver pai e for um filho a direita de seu pai.
                 Aux = Aux->pai;
             }
 
-            // Se o pai da celula atual for nulo, termine o caminhamento.
-            if (Aux->pai == NULL) {
+            if (Aux->pai == NULL) { // Se o pai da celula atual for nulo, termine o caminhamento.
                 break;
             }
             Aux = Aux->pai;
         } else {
-            // Se a celula atual nao tiver filho a direita, nem pai, termine o caminhamento.
-            break;
+            break; // Se a celula atual nao tiver filho a direita, nem pai, termine o caminhamento.
         }
     }
 }
@@ -250,36 +231,32 @@ void PosOrdemIterativa(TCelulaA *raiz) {
     int esqVisitada = 0;
 
     while (Aux != NULL) {
-        // Verifica se a celula atual tem filho a esquerda.
-        if (!esqVisitada) {
-            // Avanca para a extrema esquerda.
-            while (Aux->esq != NULL) {
+        if (!esqVisitada) { // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
+            while (Aux->esq != NULL) { // Avanca para a extrema esquerda.
                 Aux = Aux->esq;
             }
         }
 
-        // Sinaliza que o filho a esquerda ja foi visitado.
-        esqVisitada = 1;
+        esqVisitada = 1; // Sinaliza que o filho a esquerda ja foi visitado.
 
-        // Verifica se a celula atual tem filho a direita.
-        if (Aux->dir != NULL) {
+        if (Aux->dir != NULL) { // Verifica se a celula atual tem filho a direita.
             Aux = Aux->dir;
-            // Filho a esquerda da nova celula ainda nao foi visitado.
-            esqVisitada = 0;
+            esqVisitada = 0; // Filho a esquerda da nova celula ainda nao foi visitado.
         } else if (Aux->pai != NULL) {
-            // Enquanto Aux tiver pai e for um filho a direita de seu pai.
-            while (Aux->pai != NULL && Aux == Aux->pai->dir) {
-                Aux = Aux->pai;
-            }
+            ImprimirProduto(Aux->item); // Imprime o item da celula atual.
 
-            // Se o pai da celula atual for nulo, termine o caminhamento.
-            if (Aux->pai == NULL) {
+            while (Aux->pai != NULL && Aux == Aux->pai->dir) { // Enquanto Aux tiver pai e for um filho a direita de seu pai.
+                Aux = Aux->pai;
+                ImprimirProduto(Aux->item); // Imprime o item da celula atual pos avancar para o pai da celula anterior.
+            }
+            
+            if (Aux->pai == NULL) { // Se o pai da celula atual for nulo, termine o caminhamento.
                 break;
             }
+
             Aux = Aux->pai;
         } else {
-            // Se a celula atual nao tiver filho a direita, nem pai, termine o caminhamento.
-            break;
+            break; // Se a celula atual nao tiver filho a direita, nem pai, termine o caminhamento.
         }
     }
 }
@@ -287,24 +264,24 @@ void PosOrdemIterativa(TCelulaA *raiz) {
 // Questao 07 - Versao iterativa da funcao INSERIR.
 void InserirIterativa(TCelulaA **raiz, TProduto Item) {
     TCelulaA *Aux1, *Aux2;
-    Aux1 = *raiz;
+    Aux1 = *raiz; // Aux1 aponta para a mesma regiao que a raiz.
     Aux2 = NULL;
 
     while (Aux1 != NULL) {
-        Aux2 = Aux1;
-        if (Item.codigo < Aux1->item.codigo) {
-            Aux1 = Aux1->esq;
+        Aux2 = Aux1; // Aux2 percorre a arvore juntamente de Aux1.
+        if (Item.codigo < Aux1->item.codigo) { // Verifica onde o item devera ser inserido.
+            Aux1 = Aux1->esq; // Caso menor, avanca para a esquerda.
         } else {
-            Aux1 = Aux1->dir;
+            Aux1 = Aux1->dir; // Caso contrario, avanca para a direita.
         }
     }
 
-    Aux1 = criaNo(Item);
-    Aux1->pai = Aux2;
+    Aux1 = criaNo(Item); // Cria uma nova celula, atribuindo-a a Aux1.
+    Aux1->pai = Aux2; // Faz Aux2 ser o pai da celula recem-criada.
 
-    if (Aux2 == NULL) {
-        *raiz = Aux1;
-    } else if (Item.codigo < Aux2->item.codigo) {
+    if (Aux2 == NULL) { // Se Aux2 for nulo, a arvore era vazia.
+        *raiz = Aux1; // Logo, a raiz apontara para a celula recem-criada, apontada por Aux1.
+    } else if (Item.codigo < Aux2->item.codigo) { // Verifica se a celula recem-criada sera filho a esquerda ou a direita.
         Aux2->esq = Aux1;
     } else {
         Aux2->dir = Aux1;
@@ -326,12 +303,15 @@ void CentralPilha(TCelulaA *x) {
         if (Aux1 != NULL) {
             Empilhar(Aux1->item, &Pilha);
             Aux2 = Aux1;
-            Aux1 = Aux2->esq;
+            Aux1 = Aux1->esq;
         } else {
+            Aux1 = Aux2;
+            Aux2 = Aux2->pai;
+
             if (!VaziaP(Pilha)) {
                 Desempilhar(&Pilha, &produto);
                 ImprimirProduto(produto);
-                Aux1 = Aux2->dir;
+                Aux1 = Aux1->dir;
                 Aux2 = Aux2->pai;
             } else {
                 finalizado = 1;

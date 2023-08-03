@@ -16,7 +16,12 @@ void MSG_MENU() {
     printf("  \n\t[8] - MINIMO");
     printf("  \n\t[9] - SUCESSOR");
     printf("  \n\t[10] - PREDECESSOR");
-    printf("  \n\t[11] - SAIR");
+    printf("  \n\t[11] - IN-ORDEM ITERATIVA");
+    printf("  \n\t[12] - PRE-ORDEM ITERATIVA");
+    printf("  \n\t[13] - POS-ORDEM ITERATIVA");
+    printf("  \n\t[14] - INSERIR ITERATIVA");
+    printf("  \n\t[15] - IN-ORDEM W/ PILHA");
+    printf("  \n\t[16] - SAIR");
 }
 
 void MENU(TArvore *Arvore) {
@@ -36,8 +41,7 @@ void MENU(TArvore *Arvore) {
                 */
                 printf("\n\t#1 Inserir:\n");
                 LerProduto(&produto);
-                // InserirA(&Arvore->raiz, NULL, produto);
-                InserirIterativa(&Arvore->raiz, produto);
+                InserirA(&Arvore->raiz, NULL, produto);
                 break;
             case 2:
                 /**
@@ -87,9 +91,7 @@ void MENU(TArvore *Arvore) {
                 printf("\n\t#4 Caminhamento in-ordem:\n");
 
                 if (Arvore->raiz != NULL) {
-                    // Central(Arvore->raiz);
-                    CentralIterativa(Arvore->raiz);
-                    // CentralPilha(Arvore->raiz);
+                    Central(Arvore->raiz);
                 } else {
                     printf("\n\tErro: Arvore vazia.\n");
                 }
@@ -103,8 +105,7 @@ void MENU(TArvore *Arvore) {
                 printf("\n\t#5 Caminhamento pre-ordem:\n");
 
                 if (Arvore->raiz != NULL) {
-                    // PreOrdem(Arvore->raiz);
-                    PreOrdemIterativa(Arvore->raiz);
+                    PreOrdem(Arvore->raiz);
                 } else {
                     printf("\n\tErro: Arvore vazia.\n");
                 }
@@ -118,8 +119,7 @@ void MENU(TArvore *Arvore) {
                 printf("\n\t#6 Caminhamento pos-ordem:\n");
 
                 if (Arvore->raiz != NULL) {
-                    // PosOrdem(Arvore->raiz);
-                    PosOrdemIterativa(Arvore->raiz);
+                    PosOrdem(Arvore->raiz);
                 } else {
                     printf("\n\tErro: Arvore vazia.\n");
                 }
@@ -197,6 +197,70 @@ void MENU(TArvore *Arvore) {
                 system("PAUSE");
                 break;
             case 11:
+                /**
+                    Codigo para opcao de menu In-Ordem Iterativa
+                */
+                printf("\n\t#11 Caminhamento in-ordem iterativo:\n");
+
+                if (Arvore->raiz != NULL) {
+                    CentralIterativa(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
+                printf("\n");
+                system("PAUSE");
+                break;
+            case 12:
+                /**
+                    Codigo para opcao de menu Pre-Ordem Iterativa
+                */
+                printf("\n\t#12 Caminhamento pre-ordem iterativo:\n");
+
+                if (Arvore->raiz != NULL) {
+                    PreOrdemIterativa(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
+                printf("\n");
+                system("PAUSE");
+                break;
+            case 13:
+                /**
+                    Codigo para opcao de menu Pos-Ordem Iterativa
+                */
+                printf("\n\t#13 Caminhamento Pos-ordem iterativo:\n");
+
+                if (Arvore->raiz != NULL) {
+                    PosOrdemIterativa(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
+                printf("\n");
+                system("PAUSE");
+                break;
+            case 14:
+                /**
+                    Codigo para opcao de menu Inserir Iterativa
+                */
+                printf("\n\t#14 Inserir iterativa:\n");
+                LerProduto(&produto);
+                InserirIterativa(&Arvore->raiz, produto);
+                break;
+            case 15:
+                /**
+                    Codigo para opcao de menu In-Ordem w/ Pilha
+                */
+                printf("\n\t#15 Caminhamento in-ordem usando Pilha:\n");
+
+                if (Arvore->raiz != NULL) {
+                    CentralPilha(Arvore->raiz);
+                } else {
+                    printf("\n\tErro: Arvore vazia.\n");
+                }
+                printf("\n");
+                system("PAUSE");
+                break;
+            case 16:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
                 system("PAUSE");
@@ -206,5 +270,5 @@ void MENU(TArvore *Arvore) {
                 printf("\n\n\n\t >>>>>> MSG: Digite uma opcao valida!!! <<<<<< \n\n");
                 system("PAUSE");
             } // fim do bloco switch
-    } while(opcao != 11);
+    } while(opcao != 16);
 }
