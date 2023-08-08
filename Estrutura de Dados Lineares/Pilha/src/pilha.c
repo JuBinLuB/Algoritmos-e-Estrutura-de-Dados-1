@@ -92,6 +92,10 @@ int PesquisarP(TPilha *Pilha, TProduto *Item) {
     }
 }
 
+/******************************
+ * Exercicios
+ ******************************/
+
 // Inverter uma Pilha utilizando uma Fila.
 void InverterPA(TPilha *Pilha) {
     TFila Fila;

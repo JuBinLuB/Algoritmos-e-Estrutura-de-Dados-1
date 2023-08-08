@@ -86,6 +86,11 @@ void LiberarFila(TFila *Fila) {
     free(Fila->frente);
 }
 
+/******************************
+ * Exercicios
+ ******************************/
+
+// Copia os elementos de uma Fila F1 para uma Fila F2.
 void CopiarF(TFila *F1, TFila *F2) {
     TFila Aux;
     TProduto x;
@@ -108,6 +113,7 @@ void CopiarF(TFila *F1, TFila *F2) {
     free(Aux.frente);
 }
 
+// Inverte a ordem dos elementos em uma Fila.
 void InverterF(TFila *Fila) {
     TProduto x;
     

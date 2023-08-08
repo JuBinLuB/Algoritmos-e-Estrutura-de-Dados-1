@@ -81,6 +81,6 @@ void ImprimirRecursivo(TCelula *Celula) {
         return;
     } else {
         ImprimirProduto(Celula->prox->item);
-        return ImprimirRecursivo(Celula->prox);
+        ImprimirRecursivo(Celula->prox);
     }
 }

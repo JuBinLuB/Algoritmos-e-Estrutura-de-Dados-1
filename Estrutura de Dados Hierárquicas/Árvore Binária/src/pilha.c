@@ -92,6 +92,10 @@ int PesquisarP(TPilha *Pilha, TProduto *Item) {
     }
 }
 
+/******************************
+ * Exercicios
+ ******************************/
+
 // Inverter uma Pilha utilizando duas Pilhas auxiliares.
 void InverterPB(TPilha *P1) {
     TPilha P2, P3;

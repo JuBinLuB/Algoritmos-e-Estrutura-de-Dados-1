@@ -26,8 +26,6 @@ void ImprimirP(TPilha *Pilha);
 
 int PesquisarP(TPilha *Pilha, TProduto *x);
 
-void InverterPA(TPilha *Pilha);
-
 void InverterPB(TPilha *Pilha);
 
 void InverterPC(TPilha *Pilha);

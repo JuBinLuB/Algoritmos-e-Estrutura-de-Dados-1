@@ -160,21 +160,21 @@ void Retirar(TArvore *Arvore, TCelulaA **z) {
 // Questao 06 - Versao iterativa de in-ordem.
 void CentralIterativa(TCelulaA *raiz) {
     TCelulaA *Aux = raiz;
-    int foiVisitado = 0;
+    int esqVisitada = 0;
 
     while (Aux != NULL) {
-        if (!foiVisitado) { // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
+        if (!esqVisitada) { // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
             while (Aux->esq != NULL) { // Enquanto a celula atual tiver um filho a esquerda, o caminhamento continua para a esquerda.
                 Aux = Aux->esq;
             }
         }
 
         ImprimirProduto(Aux->item); // Imprime o item da celula atual.
-        foiVisitado = 1; // Sinaliza que o filho a esquerda ja foi visitado.
+        esqVisitada = 1; // Sinaliza que o filho a esquerda ja foi visitado.
 
         if (Aux->dir != NULL) { // Verifica se a celula atual tem filho a direita.
             Aux = Aux->dir;
-            foiVisitado = 0; // Filho a esquerda da nova celula ainda nao foi visitado.
+            esqVisitada = 0; // Filho a esquerda da nova celula ainda nao foi visitado.
         } else if (Aux->pai != NULL) {
             while (Aux->pai != NULL && Aux == Aux->pai->dir) { // Enquanto Aux tiver pai e for um filho a direita de seu pai.
                 Aux = Aux->pai;
@@ -289,34 +289,46 @@ void InserirIterativa(TCelulaA **raiz, TProduto Item) {
 }
 
 // Questao 08 - Versao iterativa de in-ordem utilizando TAD Pilha como estrutura de dados auxiliar.
-void CentralPilha(TCelulaA *x) {
-    TCelulaA *Aux1, *Aux2;
-    TPilha Pilha;
+void CentralPilha(TCelulaA *raiz) {
+    TCelulaA *Aux = raiz;
     TProduto produto;
+    TPilha Pilha;
     FPVazia(&Pilha);
 
-    Aux1 = x;
-    Aux2 = NULL;
-    int finalizado = 0;
+    int esqVisitada = 0;
 
-    while (!finalizado) {
-        if (Aux1 != NULL) {
-            Empilhar(Aux1->item, &Pilha);
-            Aux2 = Aux1;
-            Aux1 = Aux1->esq;
-        } else {
-            Aux1 = Aux2;
-            Aux2 = Aux2->pai;
+    while (1) {
+        if (Aux != NULL && !esqVisitada) {
+            Empilhar(Aux->item, &Pilha);
 
-            if (!VaziaP(Pilha)) {
-                Desempilhar(&Pilha, &produto);
-                ImprimirProduto(produto);
-                Aux1 = Aux1->dir;
-                Aux2 = Aux2->pai;
-            } else {
-                finalizado = 1;
+            if (Aux->esq != NULL) {
+                Aux = Aux->esq;
+                continue;
             }
         }
 
+        esqVisitada = 1;
+
+        if (!VaziaP(Pilha)) {
+            Desempilhar(&Pilha, &produto);
+            ImprimirProduto(produto);
+
+            if (Aux->dir != NULL) {
+                Aux = Aux->dir;
+                esqVisitada = 0;
+            } else if (Aux->pai != NULL) {
+                while (Aux->pai != NULL && Aux == Aux->pai->dir) {
+                    Aux = Aux->pai;
+                }
+
+                if (Aux->pai == NULL) {
+                    break;
+                }
+
+                Aux = Aux->pai;
+            } else {
+                break;
+            }
+        }
     }
 }
