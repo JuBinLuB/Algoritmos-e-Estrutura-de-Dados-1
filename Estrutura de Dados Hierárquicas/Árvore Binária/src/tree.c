@@ -153,6 +153,16 @@ void Retirar(TArvore *Arvore, TCelulaA **z) {
     *z = NULL;
 }
 
+void LiberarArvore(TCelulaA *x) {
+    if (x == NULL) {
+        return;
+    } else {
+        LiberarArvore(x->esq);
+        LiberarArvore(x->dir);
+        free(x);
+    }
+}
+
 /******************************
  * Lista de Exercicios
  ******************************/
@@ -297,38 +307,37 @@ void CentralPilha(TCelulaA *raiz) {
 
     int esqVisitada = 0;
 
-    while (1) {
-        if (Aux != NULL && !esqVisitada) {
-            Empilhar(Aux->item, &Pilha);
+    while (Aux != NULL) {
+        if (!esqVisitada) { // Verifica se a celula atual ainda nao teve seu filho a esquerda visitado.
+            Empilhar(Aux->item, &Pilha); // Empilha o item da celula atual.
 
-            if (Aux->esq != NULL) {
+            if (Aux->esq != NULL) { // Verifica se a celula a esquerda da celula atual existe.
                 Aux = Aux->esq;
                 continue;
             }
         }
 
-        esqVisitada = 1;
+        esqVisitada = 1; // Sinaliza que o filho a esquerda ja foi visitado.
 
-        if (!VaziaP(Pilha)) {
+        if (!VaziaP(Pilha)) { // Verifica se a Pilha contem itens.
             Desempilhar(&Pilha, &produto);
-            ImprimirProduto(produto);
-
-            if (Aux->dir != NULL) {
-                Aux = Aux->dir;
-                esqVisitada = 0;
-            } else if (Aux->pai != NULL) {
-                while (Aux->pai != NULL && Aux == Aux->pai->dir) {
-                    Aux = Aux->pai;
-                }
-
-                if (Aux->pai == NULL) {
-                    break;
-                }
-
+            ImprimirProduto(produto); // Imprime o item desempilhado do topo da Pilha.
+        }
+        
+        if (Aux->dir != NULL) { // Verifica se a celula atual tem filho a direita.
+            Aux = Aux->dir;
+            esqVisitada = 0; // Filho a esquerda da nova celula ainda nao foi visitado.
+        } else if (Aux->pai != NULL) {
+            while (Aux->pai != NULL && Aux == Aux->pai->dir) { // Enquanto Aux tiver pai e for um filho a direita de seu pai.
                 Aux = Aux->pai;
-            } else {
-                break;
             }
+
+            if (Aux->pai == NULL) { // Se o pai da celula atual for nulo, termine o caminhamento.
+               break;
+            }
+            Aux = Aux->pai;
+        } else {
+            break; // Se a celula atual nao tiver filho a direita, nem pai, termine o caminhamento.
         }
     }
 }

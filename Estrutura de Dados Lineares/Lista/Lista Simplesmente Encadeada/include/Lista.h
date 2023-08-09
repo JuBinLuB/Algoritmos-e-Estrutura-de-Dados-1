@@ -26,4 +26,16 @@ void ExcluirL(TLista *Lista, TProduto *Item);
 
 void LiberarLista(TLista *Lista);
 
+void InserirCrescente(TProduto x, TLista *Lista);
+
+void ImprimirICelula(TLista Lista, int i);
+
+void ExcluirICelula(TLista Lista, int i);
+
+void ImprimirRecursivo(TCelula *Celula);
+
+TCelula *PesquisarRecursivo(TCelula *Celula, TProduto Item);
+
+void Inverter(TLista *Lista);
+
 #endif // LISTA_H_INCLUDED

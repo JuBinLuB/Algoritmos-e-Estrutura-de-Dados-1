@@ -38,6 +38,8 @@ void Transplante(TArvore *Arvore, TCelulaA **u, TCelulaA **v);
 
 void Retirar(TArvore *Arvore, TCelulaA **z);
 
+void LiberarArvore(TCelulaA *raiz);
+
 void CentralIterativa(TCelulaA *x);
 
 void PreOrdemIterativa(TCelulaA *x);

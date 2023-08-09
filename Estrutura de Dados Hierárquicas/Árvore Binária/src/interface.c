@@ -263,6 +263,8 @@ void MENU(TArvore *Arvore) {
             case 16:
                 system("cls");
                 printf("\n\n\n\t >>>>>> MSG: Saindo do MODULO...!!! <<<<<< \n\n");
+                LiberarArvore(Arvore->raiz);
+                Arvore->raiz = NULL;
                 system("PAUSE");
                 break;
             default:
