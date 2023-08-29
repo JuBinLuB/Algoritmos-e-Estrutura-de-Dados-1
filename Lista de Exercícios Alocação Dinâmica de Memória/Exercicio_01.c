@@ -7,7 +7,6 @@ int StrLen(char *string);
 int StrCmp(char *string1, char *string2);
 
 int main() {
-
     // a) Teste StrCat(char *destino, char *origem).
     char destino[50] = {"Algoritmos e "};
     StrCat(destino, "Estrutura de Dados");

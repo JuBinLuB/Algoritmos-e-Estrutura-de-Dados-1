@@ -5,7 +5,7 @@
 int StrEnd(char *s, char *t);
 
 int main() {
-    // Teste de StrEnd
+    // Teste de StrEnd.
     char s[] = {"Vladilena"};
     char t[] = {"en"};
     int subEnd = StrEnd(s, t);
